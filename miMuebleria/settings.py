@@ -11,10 +11,21 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Inicializar django-environ
+env = environ.Env(
+    # Definir valores predeterminados y convertir los valores esperados
+    DEBUG=(bool, False)
+)
+
+# Leer el archivo .env, si existe
+env_file = '.env.local'
+if os.path.exists(env_file):
+    environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -23,7 +34,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%+7c54_#nl**d$g$lpr78+ge!tra40efmv1n9l$ah6a_06o6b_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG', default=True)
 
 ALLOWED_HOSTS = []
 
@@ -74,12 +85,25 @@ WSGI_APPLICATION = 'miMuebleria.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
+ }
 
+DATABASES= {
+      'default':{
+          'ENGINE':env('DB_ENGINE'),
+           'NAME':env('DB_NAME'),
+           'USER':env('DB_USER'),
+           'PASSWORD':env('DB_PASSWORD'),
+           'HOST':env('DB_HOST'),
+           'PORT':'',
+           'OPTIONS':{
+               'driver': env('DB_driver'),
+          },
+      },
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -118,3 +142,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL= '/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+#configuracion de email
+# EMAIL_BACKEND = env('EMAIL_BACKEND')
+# EMAIL_HOST = env("EMAIL_HOST")
+# EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+# EMAIL_PORT = env('EMAIL_PORT')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
