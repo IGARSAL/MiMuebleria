@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos para el documento HTML -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bloque para el título de la página, que puede ser sobrescrito por plantillas hijas -->
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Enlace al archivo CSS usando el tag 'static' de Django -->
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header id="header">
+        <span class="logo">Muebleria</span>
+        
+        <!-- Verificación si el usuario está autenticado -->
+        {% if request.user.is_authenticated %}
+        <nav>
+            <!-- Menú de navegación -->
+            <ul class="menu">
+                <!-- Clases condicionales para destacar la sección activa -->
+                <li class="{% if section == 'images' %}selected{% endif %}">
+                    <a href="#">Imágenes</a>
+                </li>
+                <li class="{% if section == 'people' %}selected{% endif %}">
+                    <a href="#">Personas</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+        
+        <!-- Saludo y enlace de autenticación -->
+        <span class="user">
+            {% if request.user.is_authenticated %}
+                <!-- Mostrar saludo al usuario autenticado -->
+                Hola {{ request.user.first_name|default:request.user.username }},
+                <!-- Enlace para cerrar sesión -->
+                <a href="{% url 'logout' %}">Cerrar sesion</a>
+            {% else %}
+                <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
+                <a href="{% url 'login' %}">LAcceder</a>
+            {% endif %}
+        </span>
+    </header>
+    
+    <!-- Mostrar mensajes si existen -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <!-- Clases de CSS para los mensajes según sus tags -->
+            <li class="{{ message.tags }}">
+                <!-- Mensaje -->
+                {{ message|safe }}
+                <!-- Enlace para cerrar el mensaje -->
+                <a href="#" class="close"></a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <!-- Contenido principal de la página -->
+    <div id="content">
+        <!-- Bloque de contenido que puede ser sobrescrito por plantillas hijas -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
+
+

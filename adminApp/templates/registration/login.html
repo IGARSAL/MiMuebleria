@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Acceder{% endblock %}
+{% block content %}
+    <h1>Acceder</h1>
+    {% if form.error %}
+        <p>Tu nombre de usuario y contraseña no coinciden.
+            Por favor, intentalo de nuevo
+        </p>
+        {% else %}
+            <p>Por favor, utiliza el siguiente fromulario para ingresar:</p>
+        {% endif %}
+        <div class="login-form">
+            <form action="{% url 'login' %}" method="post">
+                {{ form.as_table }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <p><input type="submit" value="Log-in"></p>
+            </form>
+            <p>
+                <a href="{% url "password_reset" %}">
+                    Olvidaste tú contraseña?
+                </a>
+            </p>
+        </div>
+{% endblock %}

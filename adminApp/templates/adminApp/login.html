@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Acceso{% endblock %}
+{% block content %}
+<h1>Acceso</h1>
+<p>Por favor, utiliza el siguiente formulario para acceder:</p>
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Acceso"></p>
+</form>
+{% endblock %}

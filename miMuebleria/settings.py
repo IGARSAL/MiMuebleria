@@ -147,6 +147,12 @@ STATIC_URL = '/static/'
 MEDIA_URL= '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
+AUTHENTICATION_BACKEDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'adminApp.authentication.EmailAuthBackend',
+    'social_core.backeds.facebook.FacebookAuth2',
+)
+
 #configuracion de email
 # EMAIL_BACKEND = env('EMAIL_BACKEND')
 # EMAIL_HOST = env("EMAIL_HOST")

@@ -1,0 +1,11 @@
+{% extends "base.html %}
+{% block title %}Edicción de Cuentas de usuario{% endblock %}
+{% block content %}
+    <h1>Ediccion de ceuntas de usuario</h1>
+    <p>Puedes utilizar el siguiente formulario:</p>
+    <form method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ cliente_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Guarda los cambios"></p>
+    </form>
