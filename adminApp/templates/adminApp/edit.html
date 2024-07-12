@@ -1,4 +1,4 @@
-{% extends "base.html %}
+{% extends "base.html" %}
 {% block title %}Edicción de Cuentas de usuario{% endblock %}
 {% block content %}
     <h1>Ediccion de ceuntas de usuario</h1>
@@ -9,3 +9,5 @@
         {% csrf_token %}
         <p><input type="submit" value="Guarda los cambios"></p>
     </form>
+
+{% endblock %}
