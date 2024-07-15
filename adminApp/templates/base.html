@@ -17,33 +17,32 @@
             <tr>
                 <td><img src="https://seeklogo.com/images/U/umbra-logo-BD30354E21-seeklogo.com.png" style="width: 40px; height: 40px;"></td>
                 <td style="width: 50%;"></td>
-                <td><a >HOME</a></td>
-                <td><a>PRODUCTS</a></td>
-                <td><a>ACCESORIES</a></td>
-                <td><a>LOOKBOOK</a></td>
-                <td><a>BLOG</a></td>
-                <td><a>CONTAC</a></td>
-                <td style="width: 50%; text-align: right;" ><input type="text" id="buscar" required placeholder="Muebles"></td>
-                <td><button><img src="miMuebleria/media/search.png" ></button></td>
-                <td><button><img src="miMuebleria/media/heart.png"></button></td>
-                <td><button><img src="miMuebleria/media/bag.png"></button></td>
+                <td><a href="#">HOME</a></td>
+                <td><a href="#">PRODUCTS</a></td>
+                <td><a href="#">ACCESSORIES</a></td>
+                <td><a href="#">LOOKBOOK</a></td>
+                <td><a href="#">BLOG</a></td>
+                <td><a href="#">CONTACT</a></td>
+                <td style="width: 50%; text-align: right;"><input type="text" id="buscar" required placeholder="Muebles"></td>
+                <td><button><img src="{% static 'miMuebleria/media/search.png' %}" alt="Buscar"></button></td>
+                <td><button><img src="{% static 'miMuebleria/media/heart.png' %}" alt="Favoritos"></button></td>
+                <td><button><img src="{% static 'miMuebleria/media/bag.png' %}" alt="Carrito"></button></td>
             </tr>
         </table>
     </div>
        
-        <!-- Saludo y enlace de autenticación -->
-        <span class="user">
-            {% if request.user.is_authenticated %}
-                <!-- Mostrar saludo al usuario autenticado -->
-                Hola {{ request.user.first_name|default:request.user.username }},
-                <!-- Enlace para cerrar sesión -->
-                <a href="{% url 'logout' %}">Cerrar sesion</a>
-            {% else %}
-                <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
-                <a href="{% url 'login' %}">LAcceder</a>
-            {% endif %}
-        </span>
-    </header>
+    <!-- Saludo y enlace de autenticación -->
+    <span class="user">
+        {% if request.user.is_authenticated %}
+            <!-- Mostrar saludo al usuario autenticado -->
+            Hola {{ request.user.first_name|default:request.user.username }},
+            <!-- Enlace para cerrar sesión -->
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        {% else %}
+            <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
+            <a href="{% url 'login' %}">Acceder</a>
+        {% endif %}
+    </span>
     
     <!-- Mostrar mensajes si existen -->
     {% if messages %}
@@ -118,10 +117,10 @@
         
             <table class="negocios">
                 <tr>
-                    <td><img src="miMuebleria/media/paypal_PNG6.png" style="width: 80px; height: 40px;"></td>
-                    <td><img src="miMuebleria/media/american-express.png" style="width: 80px; height: 30px;"></td>
-                    <td><img src="miMuebleria/media/amazon.png" style="width: 80px; height: 40px;"></td>
-                    <td><img src="miMuebleria/media/visa-logo-1.png" style="width: 80px; height: 30px;"></td>
+                    <td><img src="{% static 'miMuebleria/media/paypal_PNG6.png' %}" style="width: 80px; height: 40px;" alt="Paypal"></td>
+                    <td><img src="{% static 'miMuebleria/media/american-express.png' %}" style="width: 80px; height: 30px;" alt="American Express"></td>
+                    <td><img src="{% static 'miMuebleria/media/amazon.png' %}" style="width: 80px; height: 40px;" alt="Amazon"></td>
+                    <td><img src="{% static 'miMuebleria/media/visa-logo-1.png' %}" style="width: 80px; height: 30px;" alt="Visa"></td>
                 </tr>
             </table>
             <p style="color: gray;">Copyright &#9400 Umbra. Design by NooTheme. All rights reserved</p>
@@ -129,5 +128,6 @@
     </div>
 </body>
 </html>
+
 
 
