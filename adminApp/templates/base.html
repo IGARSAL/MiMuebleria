@@ -1,14 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {% load static %}
     <!-- Metadatos básicos para el documento HTML -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bloque para el título de la página, que puede ser sobrescrito por plantillas hijas -->
-    <title>{% block title %}{% endblock %}</title>
+    
     <!-- Enlace al archivo CSS usando el tag 'static' de Django -->
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'miMuebleria/css/base.css' %}" rel="stylesheet" />
 </head>
 <body>
     <!-- Encabezado de la página -->
@@ -24,9 +24,9 @@
                 <td><a>BLOG</a></td>
                 <td><a>CONTAC</a></td>
                 <td style="width: 50%; text-align: right;" ><input type="text" id="buscar" required placeholder="Muebles"></td>
-                <td><button><img src="./media/search.png" ></button></td>
-                <td><button><img src="./media/heart.png"></button></td>
-                <td><button><img src="./media/bag.png"></button></td>
+                <td><button><img src="miMuebleria/media/search.png" ></button></td>
+                <td><button><img src="miMuebleria/media/heart.png"></button></td>
+                <td><button><img src="miMuebleria/media/bag.png"></button></td>
             </tr>
         </table>
     </div>
@@ -118,10 +118,10 @@
         
             <table class="negocios">
                 <tr>
-                    <td><img src="./media/paypal_PNG6.png" style="width: 80px; height: 40px;"></td>
-                    <td><img src="./media/american-express.png" style="width: 80px; height: 30px;"></td>
-                    <td><img src="./media/amazon.png" style="width: 80px; height: 40px;"></td>
-                    <td><img src="./media/visa-logo-1.png" style="width: 80px; height: 30px;"></td>
+                    <td><img src="miMuebleria/media/paypal_PNG6.png" style="width: 80px; height: 40px;"></td>
+                    <td><img src="miMuebleria/media/american-express.png" style="width: 80px; height: 30px;"></td>
+                    <td><img src="miMuebleria/media/amazon.png" style="width: 80px; height: 40px;"></td>
+                    <td><img src="miMuebleria/media/visa-logo-1.png" style="width: 80px; height: 30px;"></td>
                 </tr>
             </table>
             <p style="color: gray;">Copyright &#9400 Umbra. Design by NooTheme. All rights reserved</p>
