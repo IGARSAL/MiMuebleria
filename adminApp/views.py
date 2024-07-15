@@ -1,11 +1,27 @@
-from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
-from .forms import ClienteEditForm, UserEditForm
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.views import View
-from .forms import UserRegistrationForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
 from .models import Cliente
 
+class DeleteUserView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'adminApp/delete_confirm.html')
+    
+    def post(self, request):
+        user = request.user
+        try:
+            user.delete()
+            messages.success(request, 'Tu cuenta ha sido eliminada correctamente.')
+            return redirect('home')
+        except:
+            messages.error(request, 'Hubo un error al eliminar tu cuenta.')
+            return redirect('login')
+        
 class RegisterView(LoginRequiredMixin, View):
     def get(self, request):
         user_form =UserRegistrationForm()
@@ -19,7 +35,9 @@ class RegisterView(LoginRequiredMixin, View):
             #Establecer un objeto Usuario
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            Cliente.objects.create(user=new_user)
+            #Verificar si ya existe un objeto Cliente
+            if not hasattr(new_user, 'cliente'):
+                Cliente.objects.create(user=new_user)
             return render(request, 'adminApp/register_done.html', {'new_user': new_user})
         else:
             return render(request, 'adminApp/register.html', {'user_form': user_form})
