@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<body>
+<div class="container">
+   
+    <div class="slide">
+        <div class="slide-inner">
+            <input class="slide-open" type="radio" id="slide-1" 
+                  name="slide" aria-hidden="true" hidden="" checked="checked">
+            <div class="slide-item">
+                <img src="./img/sillon3.jpg" style="width: 100%; height: 100%;">
+            </div>
+            <input class="slide-open" type="radio" id="slide-2" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="./img/sillon2.jpg" style="width: 100%; height: 100%;">
+            </div>
+            <input class="slide-open" type="radio" id="slide-3" 
+                  name="slide" aria-hidden="true" hidden="">
+            <div class="slide-item">
+                <img src="./img/sillon.jpg" style="width: 100%; height: 100%;">
+            </div>
+            <label for="slide-3" class="slide-control prev control-1">‹</label>
+            <label for="slide-2" class="slide-control next control-1">›</label>
+            <label for="slide-1" class="slide-control prev control-2">‹</label>
+            <label for="slide-3" class="slide-control next control-2">›</label>
+            <label for="slide-2" class="slide-control prev control-3">‹</label>
+            <label for="slide-1" class="slide-control next control-3">›</label>
+            <ol class="slide-indicador">
+                <li>
+                    <label for="slide-1" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-2" class="slide-circulo">•</label>
+                </li>
+                <li>
+                    <label for="slide-3" class="slide-circulo">•</label>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="collage">
+        <table border="0">
+           
+            <tr>
+                <td class="text1" style="width: 5%; background-color: #e8e4e4; color: #795548;"><h1>OUTDOOR FURNITURE SYDNEY</h1><A>VIEW DETAIL</A></td>
+                <td class="img2" style="width: 5%; background-color: aliceblue;"><img src="./img/collage/taburete.png"></td>
+                <td class="text3" style="width: 10%; background-color: rosybrown; color: #db0075;"><h1>DESING BY UMBRA MODERN 2015</h1><a>VIEW DETAIL</a></td>
+                <td class="img3" style="width: 40px; height: 20px; background-color: rosybrown;"><img src="./img/collage/sillon-horizontal.png"></td>
+
+            </tr>
+            <tr>
+                <td class="img1" style="background-color: #e8e4e4;"><img src="./img/collage/silla-vertical.png"></td>
+                <td colspan="2" class="img4" style="background-color: #d0eaee;">
+                    <table class="interna">
+                        <tr>
+                          <td>  
+                            <H1 style="color: #5000ff;">CERAMICS JOSH HERMAN</H1>
+                            <a style="color: #5000ff;">VIEW DETAIL</a>
+                          </td>  
+                          <td>
+                            <img src="./img/collage/jarrones.png">
+                          </td>  
+                        </tr>
+                    </table>
+                </td>
+                <td class="img5" style="background-color: aliceblue;"><img src="./img/collage/frutero.png"></td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="top-products">
+        <h1>TOP PRODUCTS</h1>
+        <A style="font-size: x-large;"><i>the best of 2024</i></A>
+<p> aqui se generarar los productos de la base de datos</p>
+<div class="vertical-container">
+    <p class="vertical-text">UMBRA FURNITURE</p>
+</div>
+
+    </div>
+    
+    <div class="descuentos">
+        <p>aqui habra una cuenta regresiva para los descuentos</p>
+
+    </div>
+</div>    
+</body>
+{% endblock %}

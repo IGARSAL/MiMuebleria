@@ -6,7 +6,14 @@ from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
+from django.shortcuts import render
 from .models import Cliente
+
+def index(request):
+    return render(request, 'adminApp/inicio.html')
+
+# class Inicio(TemplateView):
+#  		template_name = 'adminApp/inicio.html'
 
 class DeleteUserView(LoginRequiredMixin, View):
     def get(self, request):
