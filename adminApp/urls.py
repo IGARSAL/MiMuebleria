@@ -3,7 +3,6 @@ from django.urls import include, path
 from .import views
 from .views import RegisterView, EditView, DeleteUserView
 urlpatterns = [
-    path('', views.index, name='index'),
     path('', include('django.contrib.auth.urls')),
     path('register/', RegisterView.as_view(), name='register'),
     path('edit/', EditView.as_view(), name='edit'),

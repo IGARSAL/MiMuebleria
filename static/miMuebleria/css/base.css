@@ -200,3 +200,9 @@ margin: 0 auto;
 .tabla2{
     text-align: left;
 }
+
+/* static/css/styles.css */
+.login-form {
+    max-width: 400px;
+    margin: auto;
+}

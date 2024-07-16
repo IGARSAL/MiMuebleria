@@ -8,6 +8,7 @@
     <!-- Bloque para el título de la página, que puede ser sobrescrito por plantillas hijas -->
     
     <!-- Enlace al archivo CSS usando el tag 'static' de Django -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'miMuebleria/css/base.css' %}" rel="stylesheet" />
 </head>
 <body>
@@ -117,16 +118,20 @@
         
             <table class="negocios">
                 <tr>
-                    <td><img src="{% static 'miMuebleria/media/paypal_PNG6.png' %}" style="width: 80px; height: 40px;" alt="Paypal"></td>
-                    <td><img src="{% static 'miMuebleria/media/american-express.png' %}" style="width: 80px; height: 30px;" alt="American Express"></td>
-                    <td><img src="{% static 'miMuebleria/media/amazon.png' %}" style="width: 80px; height: 40px;" alt="Amazon"></td>
-                    <td><img src="{% static 'miMuebleria/media/visa-logo-1.png' %}" style="width: 80px; height: 30px;" alt="Visa"></td>
+                    <td><img src="{% static 'miMuebleria/media/logos/paypal_PNG6.png' %}" style="width: 80px; height: 40px;" alt="Paypal"></td>
+                    <td><img src="{% static 'miMuebleria/media/logos/american-express.png' %}" style="width: 80px; height: 30px;" alt="American Express"></td>
+                    <td><img src="{% static 'miMuebleria/media/logos/amazon.png' %}" style="width: 80px; height: 40px;" alt="Amazon"></td>
+                    <td><img src="{% static 'miMuebleria/media/logos/visa-logo-1.png' %}" style="width: 80px; height: 30px;" alt="Visa"></td>
                 </tr>
             </table>
             <p style="color: gray;">Copyright &#9400 Umbra. Design by NooTheme. All rights reserved</p>
         </center>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+    
 </html>
 
 
