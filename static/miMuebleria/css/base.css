@@ -204,7 +204,7 @@ margin: 0 auto;
     height: 100%;
 }
 .azul{
-    background-image: url('/img/collage/sillon-oferta.jpg');
+    background-image: url('{% static 'miMuebleria\media\collage\sillon-oferta-sinfondo.png' %}');
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
