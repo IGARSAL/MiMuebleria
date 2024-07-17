@@ -29,10 +29,25 @@
                 <td><button><img src="{% static 'miMuebleria/media/logos/heart.png' %}" alt="Favoritos"></button></td>
                 <td><button onclick="togglemenu()"><img src="{% static 'miMuebleria\media\perfil.png' %}"></button>
                     <div id="menu" class="menu">
-                        <a href="#opcion1">Login</a>
-                        <a href="#opcion2">Registrarse</a>
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}">Registrarse</a>
                     </div>
                     <script>
+      
+    //   <!-- Saludo y enlace de autenticación -->
+    //     <span class="user">
+    //         {% if request.user.is_authenticated %}
+    //             <!-- Mostrar saludo al usuario autenticado -->
+    //             Hola {{ request.user.first_name|default:request.user.username }},
+    //             <!-- Enlace para cerrar sesión -->
+    //             <a href="{% url 'logout' %}">Cerrar sesión</a>
+    //         {% else %}
+    //             <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
+    //             <a href="{% url 'login' %}">Acceder</a>
+    //         {% endif %}
+    //     </span>
+
+
         function toggleMenu() {
             var menu = document.getElementById("menu");
             if (menu.style.display === "block") {
@@ -57,35 +72,9 @@
             </tr>
         </table>
     </div>
-       
-    <!-- Saludo y enlace de autenticación -->
-    <span class="user">
-        {% if request.user.is_authenticated %}
-            <!-- Mostrar saludo al usuario autenticado -->
-            Hola {{ request.user.first_name|default:request.user.username }},
-            <!-- Enlace para cerrar sesión -->
-            <a href="{% url 'logout' %}">Cerrar sesión</a>
-        {% else %}
-            <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
-            <a href="{% url 'login' %}">Acceder</a>
-        {% endif %}
-    </span>
+      
     
-    <!-- Mostrar mensajes si existen -->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <!-- Clases de CSS para los mensajes según sus tags -->
-            <li class="{{ message.tags }}">
-                <!-- Mensaje -->
-                {{ message|safe }}
-                <!-- Enlace para cerrar el mensaje -->
-                <a href="#" class="close"></a>
-            </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    
+   
     <!-- Contenido principal de la página -->
     <div id="content">
         <!-- Bloque de contenido que puede ser sobrescrito por plantillas hijas -->
