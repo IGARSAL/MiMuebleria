@@ -26,6 +26,32 @@
                 <td style="width: 50%; text-align: right;"><input type="text" id="buscar" required placeholder="Muebles"></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/search.png' %}" alt="Buscar"></button></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/heart.png' %}" alt="Favoritos"></button></td>
+                <td><button onclick="togglemenu()"><img src="{% static 'miMuebleria\media\perfil.png' %}"></button>
+                    <div id="menu" class="menu">
+                        <a href="#opcion1">Login</a>
+                        <a href="#opcion2">Registrarse</a>
+                    </div>
+                    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menud.style.display = "block";
+            }
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (!event.target.matches('button')) {
+                var menu = document.getElementById("menu");
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                }
+            }
+        }
+    </script>
+                </td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/bag.png' %}" alt="Carrito"></button></td>
             </tr>
         </table>
