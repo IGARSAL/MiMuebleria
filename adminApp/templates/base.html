@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Encabezado de la página -->
-   <div class="menu">
+   <div class="menu1">
         <table class="tabla1">
             <tr>
                 <td><img src="https://seeklogo.com/images/U/umbra-logo-BD30354E21-seeklogo.com.png" style="width: 40px; height: 40px;"></td>
@@ -27,7 +27,7 @@
                 <td style="width: 50%; text-align: right;"><input type="text" id="buscar" required placeholder="Muebles"></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/search.png' %}" alt="Buscar"></button></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/heart.png' %}" alt="Favoritos"></button></td>
-                <td><button onclick="togglemenu()"><img src="{% static 'miMuebleria\media\perfil.png' %}"></button>
+                <td><button onclick="togglemenu()"><img src="{% static 'miMuebleria/media/logos/perfil.png' %}"></button>
                     <div id="menu" class="menu">
                         <a href="{% url 'login' %}">Login</a>
                         <a href="{% url 'register' %}">Registrarse</a>
