@@ -275,6 +275,61 @@ margin: 0 auto;
     margin-top: 50px;
     justify-content: center;
 }
+.division{
+    width: 100vh;
+    height: 100%;
+}
+.division img{
+    
+    width: 100%;
+}
+.life-style{
+    justify-content: center;
+    text-align: center;
+    width: 70%;
+}
+.life-style table{
+    border-collapse: collapse;
+}
+.life-style img{
+    width: 100%;
+}
+.life-style a{
+    color: #efb810;
+}
+.life-style h1{
+    margin-left: 2px #efb810;
+}
+.life-style p{
+    color: gray;
+}
+.life-style button{
+    background-color: white;
+    border-radius: 12px;
+    
+}
+.vertical-container2 {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.vertical-text2 {
+    writing-mode: vertical-rl; /* Texto en modo vertical de derecha a izquierda */
+    text-orientation: downright;
+    font-family: Arial, sans-serif;
+    font-size: 3em; /* Ajusta el tamaño de fuente según sea necesario */
+    color: #e0e0e0; /* Color gris claro */
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.life-style, .vertical-container2{
+    float: left;
+
+}
 
 /* static/css/styles.css */
 .login-form {
