@@ -9,12 +9,6 @@ from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
 from django.shortcuts import render
 from .models import Cliente
 
-def index(request):
-    return render(request, 'adminApp/inicio.html')
-
-# class Inicio(TemplateView):
-#  		template_name = 'adminApp/inicio.html'
-
 class DeleteUserView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'adminApp/delete_confirm.html')

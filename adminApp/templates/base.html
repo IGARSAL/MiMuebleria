@@ -8,17 +8,18 @@
     <!-- Bloque para el título de la página, que puede ser sobrescrito por plantillas hijas -->
     
     <!-- Enlace al archivo CSS usando el tag 'static' de Django -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'miMuebleria/css/base.css' %}" rel="stylesheet" />
 </head>
 <body>
     <!-- Encabezado de la página -->
-   <div class="menu">
+   <div class="menu1">
         <table class="tabla1">
             <tr>
                 <td><img src="https://seeklogo.com/images/U/umbra-logo-BD30354E21-seeklogo.com.png" style="width: 40px; height: 40px;"></td>
                 <td style="width: 50%;"></td>
-                <td><a href="#">HOME</a></td>
-                <td><a href="#">PRODUCTS</a></td>
+                <td><a href="{% url 'home' %}">HOME</a></td>
+                <td><a href="{% url 'tienda' %}">PRODUCTS</a></td>
                 <td><a href="#">ACCESSORIES</a></td>
                 <td><a href="#">LOOKBOOK</a></td>
                 <td><a href="#">BLOG</a></td>
@@ -26,39 +27,54 @@
                 <td style="width: 50%; text-align: right;"><input type="text" id="buscar" required placeholder="Muebles"></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/search.png' %}" alt="Buscar"></button></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/heart.png' %}" alt="Favoritos"></button></td>
+                <td><button onclick="togglemenu()"><img src="{% static 'miMuebleria/media/logos/perfil.png' %}"></button>
+                    <div id="menu" class="menu">
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}">Registrarse</a>
+                    </div>
+                    <script>
+      
+    //   <!-- Saludo y enlace de autenticación -->
+    //     <span class="user">
+    //         {% if request.user.is_authenticated %}
+    //             <!-- Mostrar saludo al usuario autenticado -->
+    //             Hola {{ request.user.first_name|default:request.user.username }},
+    //             <!-- Enlace para cerrar sesión -->
+    //             <a href="{% url 'logout' %}">Cerrar sesión</a>
+    //         {% else %}
+    //             <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
+    //             <a href="{% url 'login' %}">Acceder</a>
+    //         {% endif %}
+    //     </span>
+
+
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menud.style.display = "block";
+            }
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (!event.target.matches('button')) {
+                var menu = document.getElementById("menu");
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                }
+            }
+        }
+    </script>
+                </td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/bag.png' %}" alt="Carrito"></button></td>
             </tr>
         </table>
     </div>
-       
-    <!-- Saludo y enlace de autenticación -->
-    <span class="user">
-        {% if request.user.is_authenticated %}
-            <!-- Mostrar saludo al usuario autenticado -->
-            Hola {{ request.user.first_name|default:request.user.username }},
-            <!-- Enlace para cerrar sesión -->
-            <a href="{% url 'logout' %}">Cerrar sesión</a>
-        {% else %}
-            <!-- Enlace para iniciar sesión si el usuario no está autenticado -->
-            <a href="{% url 'login' %}">Acceder</a>
-        {% endif %}
-    </span>
+      
     
-    <!-- Mostrar mensajes si existen -->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <!-- Clases de CSS para los mensajes según sus tags -->
-            <li class="{{ message.tags }}">
-                <!-- Mensaje -->
-                {{ message|safe }}
-                <!-- Enlace para cerrar el mensaje -->
-                <a href="#" class="close"></a>
-            </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    
+   
     <!-- Contenido principal de la página -->
     <div id="content">
         <!-- Bloque de contenido que puede ser sobrescrito por plantillas hijas -->
@@ -126,7 +142,11 @@
             <p style="color: gray;">Copyright &#9400 Umbra. Design by NooTheme. All rights reserved</p>
         </center>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+    
 </html>
 
 
