@@ -168,7 +168,6 @@ margin: 0 auto;
 
 .vertical-container {
     display: flex;
-   
     align-items: center;
     height: 100%;
 }
@@ -205,16 +204,29 @@ margin: 0 auto;
     height: 100%;
 }
 .azul{
-    background-image: url('/img/collage/sillon-oferta.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
+    height: auto;
+    width: 50%;
+    
+}
+.texto-superpuesto0 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    width: 50%;
     color: white;
-    justify-content: center;
+}
+.imagen0{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: 1000px; /* Mantener la proporción de la imagen */
+    display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.contact0{
+    width: 100%;
+    height: 100%;
     text-align: center;
-    height: 768px;
-    width: 1024px;
-
+    position: relative;
+    display: block;
 }
 
 .azul button{
@@ -227,16 +239,14 @@ margin: 0 auto;
 .azul a{
     font-size: 25px;
 }
-.texto{
-    margin-top: 10%;
-}
 .blanco{
     background-color: #ede2db;
     color: brown;
     justify-content: center;
     text-align: center;
-    height: 768px;
     font-family: sans-serif;
+    width: 50%;
+    height: 100%;
 }
 .blanco img{
     margin-top: -75px;
@@ -245,11 +255,6 @@ margin: 0 auto;
     margin-bottom: 0;
     font-size: 110px;
     z-index: -1;
-}
-.azul, .blanco{
-    float: left;
-    width: 50%;
-    position: relative;
 }
 
 .sub{
@@ -282,13 +287,18 @@ margin: 0 auto;
 .life-style{
     justify-content: center;
     text-align: center;
-    width: 70%;
+    background-color: #e6e2e2;
 }
 .life-style table{
     border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
 }
 .life-style img{
     width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 .life-style a{
     color: #efb810;
@@ -304,11 +314,41 @@ margin: 0 auto;
     border-radius: 12px;
     
 }
+.life{
+    background-color: white;
+}
+
+.columna1{
+    width: 15%;
+}
+
+.columna2{
+    width: 70%;
+}
+.columna3{
+    width: 15%;
+}
+.piepag{
+    
+    height: 100px;
+}
+.cabesal{
+    height: 100px;
+}
+.ta{
+    border-collapse: collapse;
+    border-spacing: 0px;
+    box: sizing 0%;;
+    
+}
+.ta td{
+    padding: 0px;
+}
 .vertical-container2 {
     display: flex;
+   
+    align-items: center;
     height: 100%;
-    text-align: center;
-    justify-content: center;
 }
 
 .vertical-text2 {
@@ -320,9 +360,50 @@ margin: 0 auto;
     font-weight: bold;
     margin: 0;
     text-align: center;
+    margin-left: 30%;
 }
-
-.life-style, .vertical-container2{
+.accesorio{
     float: left;
+    width: 20%;
+    justify-content: center;
+    
+}
+.accesorio img{
+    width: 90%;
+    height: 250px;
+}
+.bl{
+    height: 90px;
+    width: 100%;
+}
+.email{
+    width: 50%;
+}
+.info{   
+    width: 50%;
+    height: 200px;
+}
+.contact{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    position: relative;
 
+}
+.imagen{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+    display: block; /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.texto-superpuesto {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 20%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: left; /* texto a la izquierda */
+}
+.texto-superpuesto2 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
 }

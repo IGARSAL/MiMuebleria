@@ -61,14 +61,3 @@ const loadingData = (estado) => {
 };
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const userTypeField = document.getElementById('id_user');  // Reemplaza con el ID de tu campo de tipo de usuario
-   
-    userTypeField.addEventListener('change', function() {
-        if (userTypeField.value === 'premium') {
-            additionalField.style.display = 'block';  // Mostrar campo adicional
-        } else {
-            additionalField.style.display = 'none';   // Ocultar campo adicional
-        }
-    });
-});

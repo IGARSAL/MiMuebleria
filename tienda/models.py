@@ -26,6 +26,7 @@ class Producto(models.Model):
     imagen2 = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto trasera')
     imagen3 = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto lateral')
     descuento = models.IntegerField(default=0, help_text='Descuento')
+    stock = models.IntegerField(default=0, help_text='Cantidad disponible en stock')
     sku = models.CharField(max_length=20, help_text='Número único del producto')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -36,4 +37,5 @@ class Producto(models.Model):
     
     def __str__(self):
         return self.nomProduct
+    
     
