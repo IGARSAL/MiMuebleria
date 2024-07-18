@@ -1,0 +1,409 @@
+.container{
+width: 100%;
+margin: 0 auto;
+}
+.slide {
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+    
+    width: 100%;
+    height: 800px;
+}
+
+.slide-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.menu img{
+    width: 30px;
+    height: 30px;
+}
+.tabla1 td{
+    margin: 50px;
+    padding: 10px;
+}
+.tabla1 button{
+    background-color: rgba(0, 0, 0, 0);
+    border: #faf8f8;
+
+}
+.tabla1{
+    font-style: oblique;
+}
+
+.menu{
+    text-decoration: none;
+    transition: text-decoration 0.2s ease-in-out;
+}
+.menu:hover{
+    text-decoration: underline;
+}
+
+.slide-open:checked + .slide-item {
+    position: static;
+    opacity: 100;
+}
+
+.slide-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+
+.slide-item img {
+    display: block;
+    height: 100%;
+    image-resolution:calc(100px + 3em) ;
+    object-fit: cover;
+    
+}
+
+.slide-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.slide-control.prev {
+    left: 2%;
+}
+
+.slide-control.next {
+    right: 2%;
+}
+
+.slide-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaaaaa;
+}
+
+#slide-1:checked ~ .control-1,
+#slide-2:checked ~ .control-2,
+#slide-3:checked ~ .control-3 {
+    display: block;
+}
+
+.slide-indicador {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.slide-indicador li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slide-circulo {
+    color: #828282;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+.slide-circulo:hover {
+    color: #aaaaaa;
+}
+
+#slide-1:checked ~ .control-1 ~ .slide-indicador 
+     li:nth-child(1) .slide-circulo,
+#slide-2:checked ~ .control-2 ~ .slide-indicador 
+      li:nth-child(2) .slide-circulo,
+#slide-3:checked ~ .control-3 ~ .slide-indicador 
+      li:nth-child(3) .slide-circulo {
+    color: #428bca;
+}
+
+#titulo {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
+         -1px 0px 2px rgba(255, 255, 255, 0);
+}
+.collage{
+    width: 100%;
+
+}
+.collage table{
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+.top-products{
+    text-align: center;
+    width: 100%;
+    height: 1500px;
+}
+
+.vertical-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl; /* Texto en modo vertical de derecha a izquierda */
+    text-orientation: downright;
+    font-family: Arial, sans-serif;
+    font-size: 3em; /* Ajusta el tamaño de fuente según sea necesario */
+    color: #e0e0e0; /* Color gris claro */
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+.no-puntos {
+    list-style-type: none;
+    padding: 0px;
+}
+.gris {
+    color: gray;
+}
+
+.espaciado li{
+    margin-bottom: 10px;
+}
+.tabla2 th{
+    text-align: left;
+}
+.tabla2{
+    text-align: left;
+}
+.descuentos{
+    width: 100%;
+    height: 100%;
+}
+.azul{
+    height: auto;
+    width: 50%;
+    
+}
+.texto-superpuesto0 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    width: 50%;
+    color: white;
+}
+.imagen0{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: 1000px; /* Mantener la proporción de la imagen */
+    display: block;  Eliminar el espacio en línea alrededor de la imagen */
+}
+.contact0{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    display: block;
+}
+
+.azul button{
+    color: brown;
+    background-color: white;
+    border: 2px;
+    border-radius:22px ;
+    padding: 15px 30px;
+}
+.azul a{
+    font-size: 25px;
+}
+.blanco{
+    background-color: #ede2db;
+    color: brown;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+    width: 50%;
+    height: 100%;
+}
+.blanco img{
+    margin-top: -75px;
+}
+.blanco h1{
+    margin-bottom: 0;
+    font-size: 110px;
+    z-index: -1;
+}
+
+.sub{
+    float: left;
+    width: 25%;
+    height: 200px;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    margin-top: -15px;
+}
+.sub img{
+    width: 90px;
+    height: 90px;
+    
+}
+.sub2{
+    padding: 20px;
+    margin-top: 50px;
+    justify-content: center;
+}
+.division{
+    width: 100vh;
+    height: 100%;
+}
+.division img{
+    
+    width: 100%;
+}
+.life-style{
+    justify-content: center;
+    text-align: center;
+    background-color: #e6e2e2;
+}
+.life-style table{
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+}
+.life-style img{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.life-style a{
+    color: #efb810;
+}
+.life-style h1{
+    margin-left: 2px #efb810;
+}
+.life-style p{
+    color: gray;
+}
+.life-style button{
+    background-color: white;
+    border-radius: 12px;
+    
+}
+.life{
+    background-color: white;
+}
+
+.columna1{
+    width: 15%;
+}
+
+.columna2{
+    width: 70%;
+}
+.columna3{
+    width: 15%;
+}
+.piepag{
+    
+    height: 100px;
+}
+.cabesal{
+    height: 100px;
+}
+.ta{
+    border-collapse: collapse;
+    border-spacing: 0px;
+    box: sizing 0%;;
+    
+}
+.ta td{
+    padding: 0px;
+}
+.vertical-container2 {
+    display: flex;
+   
+    align-items: center;
+    height: 100%;
+}
+
+.vertical-text2 {
+    writing-mode: vertical-rl; /* Texto en modo vertical de derecha a izquierda */
+    text-orientation: downright;
+    font-family: Arial, sans-serif;
+    font-size: 3em; /* Ajusta el tamaño de fuente según sea necesario */
+    color: #e0e0e0; /* Color gris claro */
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    margin-left: 30%;
+}
+.accesorio{
+    float: left;
+    width: 20%;
+    justify-content: center;
+    
+}
+.accesorio img{
+    width: 90%;
+    height: 250px;
+}
+.bl{
+    height: 90px;
+    width: 100%;
+}
+.email{
+    width: 50%;
+}
+.info{   
+    width: 50%;
+    height: 200px;
+}
+.contact{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    position: relative;
+
+}
+.imagen{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+    display: block; /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.texto-superpuesto {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 20%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: left; /* texto a la izquierda */
+}
+.texto-superpuesto2 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+}
