@@ -3,33 +3,50 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <!-- Productos -->
-        <div class="col-lg-9">
-            <div class="row">
-                {% for producto in productos %}
-                <div class="col-lg-3">
-                    <div class="card text-center shadow" style="height: 350px; margin: 5px 5px;">
-                        <img src="{{ producto.imagen1.url }}" alt="" class="card-img-top"  style ="height: 40%">
-                        <div class="card-body">
-                            <h7 class="card-title text-primary lead">
-                                {{ producto.nomProduct }}
-                            </h7>
-                            <p class="lead text-secondary">$ {{ producto.precio }}</p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <!-- <form method="post" action=#>
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color: rgb(180, 95, 95);">Agregar</button>
-                            </form> -->
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+<body data-media-url="{{ MEDIA_URL }}">
+    <div class="container">
+        <div class="row">
+            <!-- Productos -->
+            <div id="loading" class="d-none">Cargando...</div>
+            <!-- Cartas dinámicas -->
+            <section class="row" id="card-dinamicas"></section> 
         </div>
- 
     </div>
-</div>
+
+    <!-- Template -->
+    <template id="template-card">
+        <article class="col-12 col-md-6 col-lg-3 mb-3">
+            <div class="card text-center shadow">
+                <img src="" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title text-primary lead"></h5>
+                    <p class="lead text-secondary"></p>
+                    <a class="lead text-secondary"></a>
+                    <button class="btn btn-outline-primary"        
+                    class="btn btn-outline-primary" data-precio="100"
+                    data-fruta="Manzana"  
+                    >Agregar</button>
+                </div>
+            </div>
+        </article>
+    </template>
+    <!-- Widget del carrito -->
+    <div class="col-lg-3">
+        <div class="sticky-top" style="top: 20px;">
+
+            {% if request.user.is_authenticated %}
+
+                {% include "carro/widget.html" %}
+
+            {% else %}
+
+               <div class="alert alert-danger text-center">
+                 Inicia sesión para realizar tu pedido
+               </div> 
+
+            {% endif %}
+
+            </div>
+    </div>    
+</body>
 {% endblock %}

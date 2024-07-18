@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard',
     'tienda',
+    'carro'
 ]
 
 MIDDLEWARE = [

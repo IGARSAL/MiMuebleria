@@ -25,7 +25,7 @@ class Producto(models.Model):
     imagen1 = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto frontal')
     imagen2 = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto trasera')
     imagen3 = models.ImageField(upload_to=upload_to, null=True, blank=True, help_text='Imagen del producto lateral')
-    descuento = models.IntegerField(default=0, help_text='Cantidad disponible en stock')
+    descuento = models.IntegerField(default=0, help_text='Descuento')
     sku = models.CharField(max_length=20, help_text='Número único del producto')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
