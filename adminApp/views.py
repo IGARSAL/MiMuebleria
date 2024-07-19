@@ -9,7 +9,13 @@ from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
 from django.shortcuts import render
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login, logout, authenticate
 
+class CerrarSesionView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('home')
+    
 class DeleteUserView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'adminApp/delete_confirm.html')
@@ -24,7 +30,7 @@ class DeleteUserView(LoginRequiredMixin, View):
             messages.error(request, 'Hubo un error al eliminar tu cuenta.')
             return redirect('login')
         
-class RegisterView(LoginRequiredMixin, View):
+class RegisterView(View):
     def get(self, request):
         user_form =UserRegistrationForm()
         return render(request, 'adminApp/register.html', {'user_form': user_form})

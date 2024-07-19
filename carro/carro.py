@@ -1,5 +1,6 @@
 from django.shortcuts import redirect
 from tienda.models import Producto
+from decimal import Decimal, ROUND_HALF_UP  # Importa Decimal y el método de redondeo adecuado
 
 class Carro:
     def __init__(self, request):
@@ -13,17 +14,24 @@ class Carro:
     
     def agregar(self, producto):
         producto_id = str(producto.id)
+        # Calcular precio con descuento si hay un descuento
+        if producto.descuento > 0:
+            descuento_decimal = Decimal(producto.descuento) / Decimal(100)
+            precio_descuento = (producto.precio * (Decimal(1) - descuento_decimal)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+        else:
+            precio_descuento = producto.precio
+
         if producto_id not in self.carro:
             self.carro[producto_id] = {
                 "producto_id": producto.id,
                 "nombre": producto.nomProduct,
-                "precio": str(producto.precio),
+                "precio": str(precio_descuento),
                 "stock": 1,
                 "imagen1": producto.imagen1.url
             }
         else:
             self.carro[producto_id]["stock"] += 1
-            self.carro[producto_id]["precio"] = float(producto.precio)  
+            self.carro[producto_id]["precio"] = str(precio_descuento)
         self.guardar_carro()
     
     def guardar_carro(self):
@@ -50,7 +58,6 @@ class Carro:
         if producto_id in self.carro:
             return self.carro[producto_id]['stock']
         return 0
-
 
     def vaciar_carro(self):
         self.carro = {}

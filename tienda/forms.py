@@ -5,7 +5,7 @@ class ProductoForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('nomProduct', 'categorias', 'precio', 'imagen1', 'imagen2', 'imagen3', 'sku')
+        fields = ('nomProduct', 'categorias', 'precio', 'imagen1', 'imagen2', 'imagen3', 'sku', 'precio_descuento')
         labels = {'nomProduct': 'Nombre del producto',
                    'categorias':' Categorias', 
                    'precio': 'Precio del producto',
@@ -13,6 +13,7 @@ class ProductoForm(forms.ModelForm):
                    'imagen2': 'Imagen del producto trasera',
                    'imagen2': 'Imagen del producto lateral',
                    'descuento': 'Descuento del producto',
+                   'precio_descuento': 'precio con descuento',
                    'sku': 'Numero unico del producto',
                   }
         widgets = {'nombre': forms.TextInput(attrs={'class':'form-control'}),
@@ -21,4 +22,5 @@ class ProductoForm(forms.ModelForm):
             'imagen1': forms.FileInput(attrs={'class':'form-control', 'name1': 'imagen1' }),
             'imagen2': forms.FileInput(attrs={'class':'form-control', 'name2': 'imagen2' }),
             'imagen3': forms.FileInput(attrs={'class':'form-control', 'name3': 'imagen3' })
+
             }
