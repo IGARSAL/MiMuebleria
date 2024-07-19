@@ -8,6 +8,7 @@ from django.contrib import messages
 from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
 from django.shortcuts import render
 from .models import Cliente
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class DeleteUserView(LoginRequiredMixin, View):
     def get(self, request):
@@ -40,8 +41,7 @@ class RegisterView(LoginRequiredMixin, View):
             if not hasattr(new_user, 'cliente'):
                 Cliente.objects.create(user=new_user)
             return render(request, 'adminApp/register_done.html', {'new_user': new_user})
-        else:
-            return render(request, 'adminApp/register.html', {'user_form': user_form})
+        return render(request, 'adminApp/register.html', {'user_form': user_form})
         
 class EditView(LoginRequiredMixin, View):
     def get(self, request):

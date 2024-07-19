@@ -6,3 +6,5 @@ def importe_total_carro(request):
             total += float(value["precio"]) * value["stock"]
 
     return {"importe_total_carro": total}
+
+    

@@ -20,14 +20,18 @@
                             <h7 class="card-title text-primary lead">
                                 {{ producto.nomProduct }}
                             </h7>
-                            <p class="lead text-secondary">$ {{ producto.precio }}</p>
-                        </div>
-                        {% if producto.descuento > 0 %}
+                            {% if producto.descuento > 0 %}
+                                <p class = "lead text-secondary">
+                                    <del> $ {{ producto.precio }} </del> 
+                                    $ {{ producto.precio|floatformat:2|mul:producto.descuento|sub:producto.precio|floatformat:2 }}
+                                </p>
                                 <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
-                        {% endif %}
-
+                                {% else %}
+                                     <p class="lead text-secondary">$ {{ producto.precio }}</p>
+                            {% endif %}
+                        </div>
                         <div class="card-footer text-center">
-                            <form method="post" action="{% url 'carro:agregar_producto' producto.id %}">
+                             <form method="post" action="{% url 'carro:agregar_producto' producto.id %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color: rgb(180, 95, 95);">Agregar</button>
                             </form>
