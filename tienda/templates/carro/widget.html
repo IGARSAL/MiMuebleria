@@ -39,9 +39,9 @@
                                 <button type="submit" class="btn btn-sm btn-danger">-</button>
                             </form>
                         </td>
-                        <td>{{ value.nombre }}</td>
-                        <td>{{ value.stock }}</td>
-                        <td>{{ value.stock|multiply:value.precio }}</td>
+                        <td> {{ value.nombre }}</td>
+                        <td> {{ value.stock }}</td>
+                        <td>$ {{ value.stock|multiply:value.precio }}</td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -57,7 +57,7 @@
         <tfoot>
             <tr>
                 <td colspan="4" class="text-right total_carro">
-                    Total: {{ importe_total_carro }}
+                    Total: ${{ importe_total_carro }}
                 </td>
             </tr>
 
