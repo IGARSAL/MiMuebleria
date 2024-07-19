@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Creación de una cuenta de usuario{% endblock %}
 {% block content %}
+<div class="safe">
 <h1>Creación de una cuenta de usuario</h1>
 <p>Por favor, utiliza el siguiente formulario:</p>
-<form method="post">
-    {{ user_form.as_p }}
-    {% csrf_token %}
+<table method="post">
+  p[i]  {{ user_form.as_table }}
+  P2
+  P3  {% csrf_token %} P4
+    P5
     <p><input type="submit" value="Creación de usuario"></p>
-</form>
+</table>
+</div>
 {% endblock %}
