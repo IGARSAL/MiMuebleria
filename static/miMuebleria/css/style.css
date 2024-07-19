@@ -1,5 +1,5 @@
 .container{
-width: 100%;
+width:  100% !important;
 margin: 0 auto;
 }
 .slide {
@@ -19,6 +19,10 @@ margin: 0 auto;
 .menu img{
     width: 30px;
     height: 30px;
+}
+.perfil{
+    width: 50px;
+    height: 50px;
 }
 .tabla1 td{
     margin: 50px;
@@ -218,7 +222,7 @@ margin: 0 auto;
 }
 .imagen0{
     width: 100%; /* Ancho de la imagen al 100% del contenedor */
-    height: 1000px; /* Mantener la proporción de la imagen */
+    height: 900px; /* Mantener la proporción de la imagen */
     display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
 }
 .contact0{
@@ -338,7 +342,6 @@ margin: 0 auto;
 .ta{
     border-collapse: collapse;
     border-spacing: 0px;
-    box: sizing 0%;;
     
 }
 .ta td{

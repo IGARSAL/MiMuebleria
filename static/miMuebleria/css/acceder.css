@@ -1,0 +1,53 @@
+.login-form{
+    justify-content: center;
+    color: gray;
+    background-color: bisque;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+
+}
+.protect{
+    width: 100%;
+    justify-content: center;
+
+
+}
+.safe{
+    background-color: azure;
+    width: 50%;
+    margin-left: 25%;
+    text-align: left;
+    justify-content: left;
+}
+.texto-superpuesto0 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    width: 50%;
+    color: white;
+}
+.imagen3{
+    width: 100%; /* Ancho de la imagen al 100% del contenedor */
+    height: 1000px;/* Mantener la proporción de la imagen */
+    display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
+}
+.mt-5{
+    justify-content: center;
+    text-align: center;
+    color: blueviolet;
+    width: 50%;
+    margin-left: 25%;
+}
+.safe p{
+    color: blueviolet;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+
+}
+.inicio{
+    width: 100%;
+}
