@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load custom_filters %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -22,8 +24,8 @@
                             </h7>
                             {% if producto.descuento > 0 %}
                                 <p class = "lead text-secondary">
-                                    <del> $ {{ producto.precio }} </del> 
-                                    $ {{ producto.precio|floatformat:2|mul:producto.descuento|sub:producto.precio|floatformat:2 }}
+                                <del> $ {{ producto.precio }} </del> 
+                                {% with precio_descuento=producto.precio|floatformat:2|floatformat:2|add:"0.0"|mul:((100 - producto.descuento)/100)|floatformat:2 %}
                                 </p>
                                 <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
                                 {% else %}
