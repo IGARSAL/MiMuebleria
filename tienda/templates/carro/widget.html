@@ -1,0 +1,124 @@
+
+{% load carro_extras %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar pedido</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+</head>
+<body>
+    <table class="table table-bordered" style="color: rgb(22, 21, 21);">
+        <thead>
+            <tr>
+                <th colspan="4" class="text-center">
+                    Artículos Seleccionados
+                </th>
+            </tr>
+            <tr>
+                <th>Agregar/Quitar</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody class="mitabla">
+            <!-- Comprueba si hay productos en el carro-->
+            {% if request.session.carro and request.session.carro.items %}
+                {% for key, value in request.session.carro.items %}
+                    <tr class="text-center">
+                        <td>
+                            <form method="post" action="{% url 'carro:agregar_producto' key %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-success">+</button>
+                            </form>
+                            <form method="post" action="{% url 'carro:disminuir_producto' key %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger">-</button>
+                            </form>
+                        </td>
+                        <td> {{ value.nombre }}</td>
+                        <td> {{ value.stock }}</td>
+                        <td>$ {{ value.stock|multiply:value.precio }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">
+                        <div class="alert alert-danger text-center">
+                            Sin productos seleccionados
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right total_carro">
+                    Total: ${{ importe_total_carro }}
+                </td>
+            </tr>
+
+        </tfoot>
+    </table>
+    <script>
+        document.getElementById('pdfout').onclick = function (event) {
+            event.preventDefault(); // Evitar la acción predeterminada del enlace
+
+            try {
+                var table = document.querySelector('.mitabla');
+                var rows = [];
+
+                // Obtener las filas de datos de la tabla
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = [];
+
+                    for (var j = 1; j < table.rows[i].cells.length; j++) {
+                        var contenido = table.rows[i].cells[j].textContent;
+                        row.push(contenido);
+                    }
+                    rows.push(row);
+                }
+
+                // Obtener el importe total del carrito
+                var total = document.querySelector('.total_carro').textContent;
+
+                var docDefinition = {
+                    content: [
+                        {text: 'Resumen del pedido', style: 'header', alignment: 'center'}, // Centra el título
+                        {
+                            table: {
+                                headerRows: 1, // Solo una fila como encabezado
+                                widths: ['*', '*', '*'], // Distribuye uniformemente el ancho de las columnas
+                                body: [
+                                    [{text: 'Producto', style: 'tableHeader', alignment: 'center'}, {text: 'Cantidad', style: 'tableHeader', alignment: 'center'}, {text: 'Sub-Total', style: 'tableHeader', alignment: 'center'}], // Encabezado de las columnas
+                                    ...rows // Filas de datos
+                                ]
+                            },
+                            alignment: 'center' // Centra la tabla
+                        },
+                        {text: total, style: 'total', alignment: 'right'} //Inserta el total
+                    ],
+                    styles: {
+                        header: {fontSize: 18, bold: true, margin: [0, 0, 0, 10]},
+                        footer: {fontSize: 10, italic: true},
+                        total: {fontSize: 14, bold: true, margin: [0, 10, 0, 0]},
+                        tableHeader: { bold: true, fillColor: '#CCCCCC' } // Estilo para los encabezados de la tabla
+                    }
+                };
+
+                // Mostrar docDefinition en la consola
+                console.log(docDefinition);
+
+                // Crear el PDF
+                pdfMake.createPdf(docDefinition).download('Compra.pdf');
+            } catch (error) {
+                console.error("Error en la generación del PDF:", error);
+                alert("Error en la generación del PDF. Consulta la consola para más detalles.");
+            }
+        };
+    </script>
+</body>
+</html>

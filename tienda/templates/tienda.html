@@ -11,25 +11,50 @@
                 {% for producto in productos %}
                 <div class="col-lg-3">
                     <div class="card text-center shadow" style="height: 350px; margin: 5px 5px;">
-                        <img src="{{ producto.imagen1.url }}" alt="" class="card-img-top"  style ="height: 40%">
+                        {% if producto.imagen1 %}
+                        <img src="{{ MEDIA_ROOT }}{{ producto.imagen1.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
+                        {% else %}
+                        <img src="{% static 'path/to/default-image.jpg' %}" alt="Imagen no disponible" class="card-img-top" style="height: 40%">
+                        {% endif %}
                         <div class="card-body">
                             <h7 class="card-title text-primary lead">
                                 {{ producto.nomProduct }}
                             </h7>
                             <p class="lead text-secondary">$ {{ producto.precio }}</p>
                         </div>
+                        {% if producto.descuento > 0 %}
+                                <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
+                        {% endif %}
+
                         <div class="card-footer text-center">
-                            <!-- <form method="post" action=#>
+                            <form method="post" action="{% url 'carro:agregar_producto' producto.id %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color: rgb(180, 95, 95);">Agregar</button>
-                            </form> -->
+                            </form>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
- 
+        <!-- Widget del carrito -->
+        <div class="col-lg-3">
+            <div class="sticky-top" style="top: 20px;">
+
+                {% if request.user.is_authenticated %}
+
+                    {% include "carro/widget.html" %}
+
+                {% else %}
+
+                   <div class="alert alert-danger text-center">
+                     Inicia sesión para realizar tu pedido
+                   </div> 
+
+                {% endif %}
+
+                </div>
+        </div>    
     </div>
 </div>
 {% endblock %}

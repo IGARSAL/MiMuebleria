@@ -9,7 +9,8 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('adminApp/', include('adminApp.urls')),
     path('tienda/', include('tienda.urls')),
-]
+      path('carro/', include(('carro.urls', 'carro'), namespace='carro')),
+]    
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL,

@@ -219,7 +219,7 @@ margin: 0 auto;
 .imagen0{
     width: 100%; /* Ancho de la imagen al 100% del contenedor */
     height: 1000px; /* Mantener la proporción de la imagen */
-    display: block;  Eliminar el espacio en línea alrededor de la imagen */
+    display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
 }
 .contact0{
     width: 100%;
