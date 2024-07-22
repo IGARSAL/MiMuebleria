@@ -5,16 +5,12 @@
     text-align: center;
     width: 50%;
     margin-left: 25%;
-
 }
 .protect{
     width: 100%;
     justify-content: center;
-
-
 }
 .safe{
-    background-color: azure;
     width: 50%;
     margin-left: 25%;
     text-align: left;
@@ -50,4 +46,10 @@
 }
 .inicio{
     width: 100%;
+}
+.info-usuario{
+    color: orange;
+    text-align: center;
+    font-size: small;
+
 }

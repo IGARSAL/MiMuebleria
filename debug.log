@@ -14720,3 +14720,632 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in 
 (0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 9, 20, 212165), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 9, 20, 212165), 'c29x2328yw2akrm4khyv9c9p2crexs85')
 (0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
 "GET / HTTP/1.1" 200 15010
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.001) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto]' - PARAMS = (); args=()
+(0.001) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 49, 914557), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 49, 914557), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.001) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002167B876948>>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF98C8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB1908>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 0}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 0, 'counter': 1, 'revcounter': 4, 'revcounter0': 3, 'first': True, 'last': False}, 'producto': <Producto: Silla>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'FISaO6jCGTiCKsADwqD3HWvyvHCArLHSoXAO0QbrjQghSr74055yaBSaCJsLDm0z'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF98C8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB1908>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 0}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 1, 'counter': 2, 'revcounter': 3, 'revcounter0': 2, 'first': False, 'last': False}, 'producto': <Producto: Sillon>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'FISaO6jCGTiCKsADwqD3HWvyvHCArLHSoXAO0QbrjQghSr74055yaBSaCJsLDm0z'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF98C8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB1908>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 0}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 2, 'counter': 3, 'revcounter': 2, 'revcounter0': 1, 'first': False, 'last': False}, 'producto': <Producto: Lampara>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'FISaO6jCGTiCKsADwqD3HWvyvHCArLHSoXAO0QbrjQghSr74055yaBSaCJsLDm0z'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF98C8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB1908>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 0}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 3, 'counter': 4, 'revcounter': 1, 'revcounter0': 0, 'first': False, 'last': True}, 'producto': <Producto: Sillas Danica>}]
+"GET /tienda/ HTTP/1.1" 200 16237
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.001) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 51, 559545), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 51, 559545), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.001) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (13,); args=(13,)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [django_session] SET [session_data] = %s, [expire_date] = %s WHERE [django_session].[session_key] = %s' - PARAMS = ('M2E3ODI1MjRhNzQ5Yjk2ZTk3OGMyNmEwMDI5OTVmOTg1N2RlMjZmNjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifX19', datetime.datetime(2024, 8, 5, 20, 10, 51, 575555), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=('M2E3ODI1MjRhNzQ5Yjk2ZTk3OGMyNmEwMDI5OTVmOTg1N2RlMjZmNjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifX19', datetime.datetime(2024, 8, 5, 20, 10, 51, 575555), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+"POST /carro/agregar/13/ HTTP/1.1" 302 0
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto]' - PARAMS = (); args=()
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 51, 591233), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 51, 591233), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002167BBBE4C8>>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBB8C48>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BDDE448>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 1274.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 0, 'counter': 1, 'revcounter': 4, 'revcounter0': 3, 'first': True, 'last': False}, 'producto': <Producto: Silla>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'IlyZJ3BEuvpTbNHFtUeSiv54omh5Qs9WrAgDVNtt7snyjMe6XzGnLasGvo7g23sD'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBB8C48>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BDDE448>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 1274.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 1, 'counter': 2, 'revcounter': 3, 'revcounter0': 2, 'first': False, 'last': False}, 'producto': <Producto: Sillon>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'IlyZJ3BEuvpTbNHFtUeSiv54omh5Qs9WrAgDVNtt7snyjMe6XzGnLasGvo7g23sD'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBB8C48>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BDDE448>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 1274.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 2, 'counter': 3, 'revcounter': 2, 'revcounter0': 1, 'first': False, 'last': False}, 'producto': <Producto: Lampara>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'IlyZJ3BEuvpTbNHFtUeSiv54omh5Qs9WrAgDVNtt7snyjMe6XzGnLasGvo7g23sD'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBB8C48>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BDDE448>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 1274.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 3, 'counter': 4, 'revcounter': 1, 'revcounter0': 0, 'first': False, 'last': True}, 'producto': <Producto: Sillas Danica>}]
+"GET /tienda/ HTTP/1.1" 200 18139
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.001) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 52, 230827), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 52, 230827), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.001) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (12,); args=(12,)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [django_session] SET [session_data] = %s, [expire_date] = %s WHERE [django_session].[session_key] = %s' - PARAMS = ('MDRiNWIwOWY1MTJkZGVhZGRhYzU0NWNlNDY0NTBmNWNiZjEyNDdiZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 52, 247760), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=('MDRiNWIwOWY1MTJkZGVhZGRhYzU0NWNlNDY0NTBmNWNiZjEyNDdiZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 52, 247760), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+"POST /carro/agregar/12/ HTTP/1.1" 302 0
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto]' - PARAMS = (); args=()
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 52, 263738), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 52, 263738), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002167BBBE828>>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BDD1AC8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBCF348>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 3674.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 0, 'counter': 1, 'revcounter': 4, 'revcounter0': 3, 'first': True, 'last': False}, 'producto': <Producto: Silla>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'ofZqPXV34uM8TIQWZ3NkCUoW85cYct697uH41HNSHrKN1HnntIfP5zLyf729o4pQ'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BDD1AC8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBCF348>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 3674.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 1, 'counter': 2, 'revcounter': 3, 'revcounter0': 2, 'first': False, 'last': False}, 'producto': <Producto: Sillon>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'ofZqPXV34uM8TIQWZ3NkCUoW85cYct697uH41HNSHrKN1HnntIfP5zLyf729o4pQ'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BDD1AC8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBCF348>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 3674.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 2, 'counter': 3, 'revcounter': 2, 'revcounter0': 1, 'first': False, 'last': False}, 'producto': <Producto: Lampara>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'ofZqPXV34uM8TIQWZ3NkCUoW85cYct697uH41HNSHrKN1HnntIfP5zLyf729o4pQ'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BDD1AC8>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBCF348>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 3674.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 3, 'counter': 4, 'revcounter': 1, 'revcounter0': 0, 'first': False, 'last': True}, 'producto': <Producto: Sillas Danica>}]
+"GET /tienda/ HTTP/1.1" 200 19181
+(0.001) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.001) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 52, 869602), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 52, 869602), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.001) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (10,); args=(10,)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [django_session] SET [session_data] = %s, [expire_date] = %s WHERE [django_session].[session_key] = %s' - PARAMS = ('NzYzMDNiNjJkMWI3OTFlYTVmYWYyODI4NjM3YTUyMWJhODlhY2UwYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9LCIxMCI6eyJwcm9kdWN0b19pZCI6MTAsIm5vbWJyZSI6IlNpbGxhIiwicHJlY2lvIjoiNDUwLjAwIiwic3RvY2siOjEsImltYWdlbjEiOiJzdGF0aWMvbWVkaWEvdGllbmRhLzIwMjQvMDcvMTgvQ2FwdHVyYWRlUGFudGFsbGEyMDIxLTA2LTIzYWxhX3NfMTIuNDQuMjEud2VicCJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 52, 887589), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=('NzYzMDNiNjJkMWI3OTFlYTVmYWYyODI4NjM3YTUyMWJhODlhY2UwYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9LCIxMCI6eyJwcm9kdWN0b19pZCI6MTAsIm5vbWJyZSI6IlNpbGxhIiwicHJlY2lvIjoiNDUwLjAwIiwic3RvY2siOjEsImltYWdlbjEiOiJzdGF0aWMvbWVkaWEvdGllbmRhLzIwMjQvMDcvMTgvQ2FwdHVyYWRlUGFudGFsbGEyMDIxLTA2LTIzYWxhX3NfMTIuNDQuMjEud2VicCJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 52, 887589), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+"POST /carro/agregar/10/ HTTP/1.1" 302 0
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto]' - PARAMS = (); args=()
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 52, 903519), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 52, 903519), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002167BBBEC18>>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BB4A188>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB2648>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 4124.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 0, 'counter': 1, 'revcounter': 4, 'revcounter0': 3, 'first': True, 'last': False}, 'producto': <Producto: Silla>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'h7ZlR24KIwqI0gxlO4yOj1dLjEuXjR0R0mHZ3MWzlton8f4MiJ0jMGAnqGk8vsjy'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BB4A188>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB2648>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 4124.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 1, 'counter': 2, 'revcounter': 3, 'revcounter0': 2, 'first': False, 'last': False}, 'producto': <Producto: Sillon>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'h7ZlR24KIwqI0gxlO4yOj1dLjEuXjR0R0mHZ3MWzlton8f4MiJ0jMGAnqGk8vsjy'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BB4A188>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB2648>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 4124.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 2, 'counter': 3, 'revcounter': 2, 'revcounter0': 1, 'first': False, 'last': False}, 'producto': <Producto: Lampara>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'h7ZlR24KIwqI0gxlO4yOj1dLjEuXjR0R0mHZ3MWzlton8f4MiJ0jMGAnqGk8vsjy'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BB4A188>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBB2648>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 4124.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 3, 'counter': 4, 'revcounter': 1, 'revcounter0': 0, 'first': False, 'last': True}, 'producto': <Producto: Sillas Danica>}]
+"GET /tienda/ HTTP/1.1" 200 20220
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.001) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 53, 344341), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 53, 344341), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.001) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (11,); args=(11,)
+(0.001) QUERY = 'SET NOCOUNT OFF; UPDATE [django_session] SET [session_data] = %s, [expire_date] = %s WHERE [django_session].[session_key] = %s' - PARAMS = ('MjE2NGNiYjAyY2U4Y2U4Y2RlZDIwM2U0Y2Q0NWExNzAzNTNmYmViYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9LCIxMCI6eyJwcm9kdWN0b19pZCI6MTAsIm5vbWJyZSI6IlNpbGxhIiwicHJlY2lvIjoiNDUwLjAwIiwic3RvY2siOjEsImltYWdlbjEiOiJzdGF0aWMvbWVkaWEvdGllbmRhLzIwMjQvMDcvMTgvQ2FwdHVyYWRlUGFudGFsbGEyMDIxLTA2LTIzYWxhX3NfMTIuNDQuMjEud2VicCJ9LCIxMSI6eyJwcm9kdWN0b19pZCI6MTEsIm5vbWJyZSI6IlNpbGxvbiIsInByZWNpbyI6IjUyMDAuMDAiLCJzdG9jayI6MSwiaW1hZ2VuMSI6InN0YXRpYy9tZWRpYS90aWVuZGEvMjAyNC8wNy8xNy82MDB4NjAwXzJfMV8yODA4NGU4MC0zYmQ4LTQyYWUtYTU5Ni1kMjBhZWJiNWU4ZTIud2VicCJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 53, 353340), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=('MjE2NGNiYjAyY2U4Y2U4Y2RlZDIwM2U0Y2Q0NWExNzAzNTNmYmViYTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnsiMTMiOnsicHJvZHVjdG9faWQiOjEzLCJub21icmUiOiJTaWxsYXMgRGFuaWNhIiwicHJlY2lvIjoiMTI3NC45OCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE4L0lNR18xMTQxLTYwMHB4XzFfNmI1ZWViZGQtNjQzMy00OWI5LWJhMGMtZDczMmU3Zjc4YTFlLndlYnAifSwiMTIiOnsicHJvZHVjdG9faWQiOjEyLCJub21icmUiOiJMYW1wYXJhIiwicHJlY2lvIjoiMjQwMC4wMCIsInN0b2NrIjoxLCJpbWFnZW4xIjoic3RhdGljL21lZGlhL3RpZW5kYS8yMDI0LzA3LzE3LzUxZVBSaFFFZXFMLl9BQ19TTDEwMDJfLmpwZyJ9LCIxMCI6eyJwcm9kdWN0b19pZCI6MTAsIm5vbWJyZSI6IlNpbGxhIiwicHJlY2lvIjoiNDUwLjAwIiwic3RvY2siOjEsImltYWdlbjEiOiJzdGF0aWMvbWVkaWEvdGllbmRhLzIwMjQvMDcvMTgvQ2FwdHVyYWRlUGFudGFsbGEyMDIxLTA2LTIzYWxhX3NfMTIuNDQuMjEud2VicCJ9LCIxMSI6eyJwcm9kdWN0b19pZCI6MTEsIm5vbWJyZSI6IlNpbGxvbiIsInByZWNpbyI6IjUyMDAuMDAiLCJzdG9jayI6MSwiaW1hZ2VuMSI6InN0YXRpYy9tZWRpYS90aWVuZGEvMjAyNC8wNy8xNy82MDB4NjAwXzJfMV8yODA4NGU4MC0zYmQ4LTQyYWUtYTU5Ni1kMjBhZWJiNWU4ZTIud2VicCJ9fX0=', datetime.datetime(2024, 8, 5, 20, 10, 53, 353340), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+"POST /carro/agregar/11/ HTTP/1.1" 302 0
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto]' - PARAMS = (); args=()
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 10, 53, 360170), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 10, 53, 360170), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x000002167BBBE678>>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF9B08>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBA7788>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 9324.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 0, 'counter': 1, 'revcounter': 4, 'revcounter0': 3, 'first': True, 'last': False}, 'producto': <Producto: Silla>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'jFP6E6ydVrZLYHkCOTOMm9KhfNncY6Kw2UxKQQq2yoXq6GR3iyghPO7TmPdnaH3d'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF9B08>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBA7788>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 9324.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 1, 'counter': 2, 'revcounter': 3, 'revcounter0': 2, 'first': False, 'last': False}, 'producto': <Producto: Sillon>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'jFP6E6ydVrZLYHkCOTOMm9KhfNncY6Kw2UxKQQq2yoXq6GR3iyghPO7TmPdnaH3d'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF9B08>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBA7788>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 9324.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 2, 'counter': 3, 'revcounter': 2, 'revcounter0': 1, 'first': False, 'last': False}, 'producto': <Producto: Lampara>}]
+Exception while resolving variable 'MEDIA_URL' in template 'tienda.html'.
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'MEDIA_URL'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\inti.garcia.FGR\Documents\miMuebleria\.venv\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [MEDIA_URL] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'jFP6E6ydVrZLYHkCOTOMm9KhfNncY6Kw2UxKQQq2yoXq6GR3iyghPO7TmPdnaH3d'>, 'request': <WSGIRequest: GET '/tienda/'>, 'user': <SimpleLazyObject: <User: inti.garcia>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x000002167BBF9B08>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x000002167BBA7788>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'importe_total_carro': 9324.98}, {}, {'productos': <QuerySet [<Producto: Silla>, <Producto: Sillon>, <Producto: Lampara>, <Producto: Sillas Danica>]>}, {'block': <Block Node: content. Contents: [<TextNode: '\n<div class="container">\n'>, <ForNode: for producto in productos, tail_len: 11>, <TextNode: '\n            </div>\n     '>, <IfNode>, <TextNode: '\n\n            </div>\n    '>]>}, {'forloop': {'parentloop': {}, 'counter0': 3, 'counter': 4, 'revcounter': 1, 'revcounter0': 0, 'first': False, 'last': True}, 'producto': <Producto: Sillas Danica>}]
+"GET /tienda/ HTTP/1.1" 200 21261
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 11, 15, 197527), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 11, 15, 197527), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+(0.002) QUERY = 'SET NOCOUNT ON INSERT INTO [pedidos] ([user_id], [estado], [created], [updated]) VALUES (%s, %s, %s, %s); SELECT CAST(SCOPE_IDENTITY() AS bigint)' - PARAMS = (1, 'pendiente', datetime.datetime(2024, 7, 22, 20, 11, 15, 203532), datetime.datetime(2024, 7, 22, 20, 11, 15, 203532)); args=(1, 'pendiente', datetime.datetime(2024, 7, 22, 20, 11, 15, 203532), datetime.datetime(2024, 7, 22, 20, 11, 15, 203532))
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (13,); args=(13,)
+(0.003) QUERY = 'SET NOCOUNT OFF; UPDATE [tienda_producto] SET [nomProduct] = %s, [categorias_id] = %s, [precio] = %s, [imagen1] = %s, [imagen2] = %s, [imagen3] = %s, [ventas_totales] = %s, [descuento] = %s, [stock] = %s, [sku] = %s, [created] = %s, [updated] = %s WHERE [tienda_producto].[id] = %s' - PARAMS = ('Sillas Danica', 2, '1499.98', 'tienda/2024/07/18/IMG_1141-600px_1_6b5eebdd-6433-49b9-ba0c-d732e7f78a1e.webp', 'tienda/2024/07/18/IMG_1144-600px_1_adf6a22b-4bd8-4527-94a8-810bc9ec51ac.webp', 'tienda/2024/07/18/IMG_1152-1200px-600px_1_7d5f85b9-0750-41f7-9372-95bb7323de49.webp', 1, 15, 8, 'GSGD12000', datetime.datetime(2024, 7, 18, 16, 21, 43, 779435), datetime.datetime(2024, 7, 22, 20, 11, 15, 207861), 13); args=('Sillas Danica', 2, '1499.98', 'tienda/2024/07/18/IMG_1141-600px_1_6b5eebdd-6433-49b9-ba0c-d732e7f78a1e.webp', 'tienda/2024/07/18/IMG_1144-600px_1_adf6a22b-4bd8-4527-94a8-810bc9ec51ac.webp', 'tienda/2024/07/18/IMG_1152-1200px-600px_1_7d5f85b9-0750-41f7-9372-95bb7323de49.webp', 1, 15, 8, 'GSGD12000', datetime.datetime(2024, 7, 18, 16, 21, 43, 779435), datetime.datetime(2024, 7, 22, 20, 11, 15, 207861), 13)
+(0.001) QUERY = 'SET NOCOUNT ON INSERT INTO [tienda_reporteventas] ([producto_id], [usuario_id], [cantidad], [total_venta], [fecha]) VALUES (%s, %s, %s, %s, %s); SELECT CAST(SCOPE_IDENTITY() AS bigint)' - PARAMS = (13, 1, 1, '1274.98', datetime.datetime(2024, 7, 22, 20, 11, 15, 212865)); args=(13, 1, 1, '1274.98', datetime.datetime(2024, 7, 22, 20, 11, 15, 212865))
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (12,); args=(12,)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [tienda_producto] SET [nomProduct] = %s, [categorias_id] = %s, [precio] = %s, [imagen1] = %s, [imagen2] = %s, [imagen3] = %s, [ventas_totales] = %s, [descuento] = %s, [stock] = %s, [sku] = %s, [created] = %s, [updated] = %s WHERE [tienda_producto].[id] = %s' - PARAMS = ('Lampara', 1, '3000.00', 'tienda/2024/07/17/51ePRhQEeqL._AC_SL1002_.jpg', 'tienda/2024/07/17/4193GpvndL._AC_SL1230_.jpg', 'tienda/2024/07/17/51ft1kyPyML._AC_SL1002_.jpg', 1, 20, 7, 'igjkhkjh', datetime.datetime(2024, 7, 18, 0, 28, 46, 982339), datetime.datetime(2024, 7, 22, 20, 11, 15, 214934), 12); args=('Lampara', 1, '3000.00', 'tienda/2024/07/17/51ePRhQEeqL._AC_SL1002_.jpg', 'tienda/2024/07/17/4193GpvndL._AC_SL1230_.jpg', 'tienda/2024/07/17/51ft1kyPyML._AC_SL1002_.jpg', 1, 20, 7, 'igjkhkjh', datetime.datetime(2024, 7, 18, 0, 28, 46, 982339), datetime.datetime(2024, 7, 22, 20, 11, 15, 214934), 12)
+(0.000) QUERY = 'SET NOCOUNT ON INSERT INTO [tienda_reporteventas] ([producto_id], [usuario_id], [cantidad], [total_venta], [fecha]) VALUES (%s, %s, %s, %s, %s); SELECT CAST(SCOPE_IDENTITY() AS bigint)' - PARAMS = (12, 1, 1, '2400.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 214934)); args=(12, 1, 1, '2400.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 214934))
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (10,); args=(10,)
+(0.001) QUERY = 'SET NOCOUNT OFF; UPDATE [tienda_producto] SET [nomProduct] = %s, [categorias_id] = %s, [precio] = %s, [imagen1] = %s, [imagen2] = %s, [imagen3] = %s, [ventas_totales] = %s, [descuento] = %s, [stock] = %s, [sku] = %s, [created] = %s, [updated] = %s WHERE [tienda_producto].[id] = %s' - PARAMS = ('Silla', 1, '600.00', 'tienda/2024/07/18/CapturadePantalla2021-06-23ala_s_12.44.21.webp', '', '', 1, 25, 7, 'dssds', datetime.datetime(2024, 7, 16, 20, 2, 33, 709625), datetime.datetime(2024, 7, 22, 20, 11, 15, 214934), 10); args=('Silla', 1, '600.00', 'tienda/2024/07/18/CapturadePantalla2021-06-23ala_s_12.44.21.webp', '', '', 1, 25, 7, 'dssds', datetime.datetime(2024, 7, 16, 20, 2, 33, 709625), datetime.datetime(2024, 7, 22, 20, 11, 15, 214934), 10)
+(0.000) QUERY = 'SET NOCOUNT ON INSERT INTO [tienda_reporteventas] ([producto_id], [usuario_id], [cantidad], [total_venta], [fecha]) VALUES (%s, %s, %s, %s, %s); SELECT CAST(SCOPE_IDENTITY() AS bigint)' - PARAMS = (10, 1, 1, '450.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 219478)); args=(10, 1, 1, '450.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 219478))
+(0.000) QUERY = 'SELECT [tienda_producto].[id], [tienda_producto].[nomProduct], [tienda_producto].[categorias_id], [tienda_producto].[precio], [tienda_producto].[imagen1], [tienda_producto].[imagen2], [tienda_producto].[imagen3], [tienda_producto].[ventas_totales], [tienda_producto].[descuento], [tienda_producto].[stock], [tienda_producto].[sku], [tienda_producto].[created], [tienda_producto].[updated] FROM [tienda_producto] WHERE [tienda_producto].[id] = %s' - PARAMS = (11,); args=(11,)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [tienda_producto] SET [nomProduct] = %s, [categorias_id] = %s, [precio] = %s, [imagen1] = %s, [imagen2] = %s, [imagen3] = %s, [ventas_totales] = %s, [descuento] = %s, [stock] = %s, [sku] = %s, [created] = %s, [updated] = %s WHERE [tienda_producto].[id] = %s' - PARAMS = ('Sillon', 1, '5200.00', 'tienda/2024/07/17/600x600_2_1_28084e80-3bd8-42ae-a596-d20aebb5e8e2.webp', 'tienda/2024/07/17/600x600_5_1_499db5dd-237e-4bd1-99bf-6783d068d507.webp', 'tienda/2024/07/17/600x600_3_1_b1e7f51a-d0d5-4a97-8e35-7c44d711e5cb.webp', 1, 0, 9, 'sdfdfsj349045', datetime.datetime(2024, 7, 18, 0, 23, 7, 351520), datetime.datetime(2024, 7, 22, 20, 11, 15, 219478), 11); args=('Sillon', 1, '5200.00', 'tienda/2024/07/17/600x600_2_1_28084e80-3bd8-42ae-a596-d20aebb5e8e2.webp', 'tienda/2024/07/17/600x600_5_1_499db5dd-237e-4bd1-99bf-6783d068d507.webp', 'tienda/2024/07/17/600x600_3_1_b1e7f51a-d0d5-4a97-8e35-7c44d711e5cb.webp', 1, 0, 9, 'sdfdfsj349045', datetime.datetime(2024, 7, 18, 0, 23, 7, 351520), datetime.datetime(2024, 7, 22, 20, 11, 15, 219478), 11)
+(0.004) QUERY = 'SET NOCOUNT ON INSERT INTO [tienda_reporteventas] ([producto_id], [usuario_id], [cantidad], [total_venta], [fecha]) VALUES (%s, %s, %s, %s, %s); SELECT CAST(SCOPE_IDENTITY() AS bigint)' - PARAMS = (11, 1, 1, '5200.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 222986)); args=(11, 1, 1, '5200.00', datetime.datetime(2024, 7, 22, 20, 11, 15, 222986))
+(0.000) QUERY = 'INSERT INTO [lineas_pedidos] ([pedido_id], [producto_id], [cantidadVendida], [total_pedido], [created_at]) VALUES (%s, %s, %s, %s, %s), (%s, %s, %s, %s, %s), (%s, %s, %s, %s, %s), (%s, %s, %s, %s, %s)' - PARAMS = (31, 13, 1, 1274.98, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 12, 1, 2400.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 10, 1, 450.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 11, 1, 5200.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994)); args=(31, 13, 1, 1274.98, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 12, 1, 2400.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 10, 1, 450.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31, 11, 1, 5200.0, datetime.datetime(2024, 7, 22, 20, 11, 15, 226994))
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [pedidos] SET [user_id] = %s, [estado] = %s, [created] = %s, [updated] = %s WHERE [pedidos].[id] = %s' - PARAMS = (1, 'pendiente', datetime.datetime(2024, 7, 22, 20, 11, 15, 203532), datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31); args=(1, 'pendiente', datetime.datetime(2024, 7, 22, 20, 11, 15, 203532), datetime.datetime(2024, 7, 22, 20, 11, 15, 226994), 31)
+(0.000) QUERY = 'SET NOCOUNT OFF; UPDATE [django_session] SET [session_data] = %s, [expire_date] = %s WHERE [django_session].[session_key] = %s' - PARAMS = ('ZWUxNzNmYjg5ZThhMTEyNDk4NGRmNzRiNTNjZGFjZDc0ZWRkYjZiZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnt9fQ==', datetime.datetime(2024, 8, 5, 20, 11, 15, 251831), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=('ZWUxNzNmYjg5ZThhMTEyNDk4NGRmNzRiNTNjZGFjZDc0ZWRkYjZiZjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJlMGQxOTVkYmZiYTBlMjBlMjIwMjA1OTUzNzU1MWUxNDk3NTljYWEwIiwiY2Fycm8iOnt9fQ==', datetime.datetime(2024, 8, 5, 20, 11, 15, 251831), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+"POST /almacen/ HTTP/1.1" 302 0
+(0.000) QUERY = 'SELECT SYSDATETIME()' - PARAMS = (); args=None
+(0.000) QUERY = 'SELECT [django_session].[session_key], [django_session].[session_data], [django_session].[expire_date] FROM [django_session] WHERE ([django_session].[expire_date] > %s AND [django_session].[session_key] = %s)' - PARAMS = (datetime.datetime(2024, 7, 22, 20, 11, 15, 264701), 'c29x2328yw2akrm4khyv9c9p2crexs85'); args=(datetime.datetime(2024, 7, 22, 20, 11, 15, 264701), 'c29x2328yw2akrm4khyv9c9p2crexs85')
+(0.000) QUERY = 'SELECT [auth_user].[id], [auth_user].[password], [auth_user].[last_login], [auth_user].[is_superuser], [auth_user].[username], [auth_user].[first_name], [auth_user].[last_name], [auth_user].[email], [auth_user].[is_staff], [auth_user].[is_active], [auth_user].[date_joined] FROM [auth_user] WHERE [auth_user].[id] = %s' - PARAMS = (1,); args=(1,)
+"GET / HTTP/1.1" 200 15010

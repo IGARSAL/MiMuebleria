@@ -17,12 +17,12 @@ margin: 0 auto;
     height: 100%;
 }
 .menu img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 .perfil{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .tabla1 td{
     margin: 50px;
@@ -35,12 +35,10 @@ margin: 0 auto;
 }
 .tabla1{
     font-style: oblique;
+    width: 100%;
 }
 
-.menu{
-    text-decoration: none;
-    transition: text-decoration 0.2s ease-in-out;
-}
+
 .menu:hover{
     text-decoration: underline;
 }

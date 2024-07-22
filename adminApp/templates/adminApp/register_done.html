@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Bienvenidos{% endblock %} 
 {% block content %}
+<img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
+
+<div class="safe">
+    <div class="texto-superpuesto0">
 <h1>Bienvenido {{ new_user.first_name }}</h1>
 <p>
     Tu cuenta se ha credado sastifactoriamenente
     En este momento puedes <a href="{% url  'login' %}">Acceso</a>
 </p>
+</div>
+</div>
 {% endblock%}

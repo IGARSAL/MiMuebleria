@@ -3,7 +3,11 @@
 {% block title %}Creación de una cuenta de usuario{% endblock %}
 
 {% block content %}
+<img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
 <div class="safe">
+  
+    <div class="texto-superpuesto0">
+
 <h1>Creación de una cuenta de usuario</h1>
 <p>Por favor, utiliza el siguiente formulario:</p>
 <form method="post" class="form">
@@ -11,7 +15,7 @@
     
     <div class="form-group">
         <label for="username">Nombre de usuario</label>
-        <input type="text" class="form-control" id="username" name="username" value="{{ user_form.username.value }}">
+        <input type="text" class="form-control" id="username" name="username" required placeholder="Ej. JUANPE">
         {% for error in user_form.username.errors %}
             <div class="text-danger">{{ error }}</div>
         {% endfor %}
@@ -19,7 +23,7 @@
 
     <div class="form-group">
         <label for="first_name">Nombre</label>
-        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user_form.first_name.value }}">
+        <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Ej. JUAN PEREZ SOLIS">
         {% for error in user_form.first_name.errors %}
             <div class="text-danger">{{ error }}</div>
         {% endfor %}
@@ -27,7 +31,7 @@
 
     <div class="form-group">
         <label for="email">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" name="email" value="{{ user_form.email.value }}">
+        <input type="email" class="form-control" id="email" name="email" required placeholder="Ej. JUAN.PEREZ@EJEMPLO.COM">
         {% for error in user_form.email.errors %}
             <div class="text-danger">{{ error }}</div>
         {% endfor %}
@@ -35,7 +39,7 @@
 
     <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password" value="{{ user_form.password.value }}">
+        <input type="password" class="form-control" id="password" name="password" required placeholder="8 - 18 caracteres">
         {% for error in user_form.password.errors %}
             <div class="text-danger">{{ error }}</div>
         {% endfor %}
@@ -43,7 +47,7 @@
 
     <div class="form-group">
         <label for="password2">Repetir Contraseña</label>
-        <input type="password" class="form-control" id="password2" name="password2" value="{{ user_form.password2.value }}">
+        <input type="password" class="form-control" id="password2" name="password2" required placeholder="8 - 18 caracteres">
         {% for error in user_form.password2.errors %}
             <div class="text-danger">{{ error }}</div>
         {% endfor %}
@@ -63,7 +67,7 @@
         </ul>
     </div>
 {% endif %}
-
+</div>
 </div>
 
 {% endblock %}
