@@ -1,5 +1,5 @@
 from django.db import models
-from tienda.models import Producto, Cliente
+from tienda.models import Producto
 from django.db.models import F, Sum, FloatField
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -21,8 +21,8 @@ class Pedido(models.Model):
     @property
     def total(self):
         return self.lineapedido_set.aggregate(
-            total=Sum(F("producto_id__precio") * F("stock"), output_field=FloatField())
-        )["total"] or FloatField(default=0)
+            total=Sum(F("producto__precio") * F("cantidadVendida"), output_field=FloatField())
+        )["total"] or 0.0
 
     class Meta:
         db_table = 'pedidos'
@@ -37,12 +37,11 @@ class LineaPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidadVendida = models.IntegerField(default=1)
-    
     total_pedido = models.FloatField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.cantidad} unidades de {self.producto.nombreProd}'
+        return f'{self.cantidadVendida} unidades de {self.producto.nomProduct}'
 
     class Meta:
         db_table = 'lineas_pedidos'

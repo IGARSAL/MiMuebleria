@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views import View
 from .models import Producto  # Asegúrate de importar tu modelo Producto
 from decimal import Decimal, ROUND_HALF_UP  # Importa Decimal y el método de redondeo adecuado
+from django.conf import settings
 
 class ProductosJsonView(View):
     def get(self, request):
@@ -31,7 +32,10 @@ class ProductosJsonView(View):
 class TiendaView(View):
     def get(self, request):
         productos = Producto.objects.all()
-        
+        context = {
+            "productos": productos,
+            "MEDIA_URL": settings.MEDIA_URL
+        }
         # Calcular precio con descuento para cada producto
         for producto in productos:
             if producto.descuento > 0:

@@ -6,7 +6,6 @@ from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
-from django.shortcuts import render
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, logout, authenticate

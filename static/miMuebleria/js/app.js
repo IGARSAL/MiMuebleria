@@ -60,4 +60,58 @@ const loadingData = (estado) => {
     }
 };
 
+document.getElementById('pdfout').onclick = function (event) {
+    event.preventDefault(); // Evitar la acción predeterminada del enlace
 
+    try {
+        var table = document.querySelector('.mitabla');
+        var rows = [];
+
+        // Obtener las filas de datos de la tabla
+        for (var i = 0; i < table.rows.length; i++) {
+            var row = [];
+
+            for (var j = 1; j < table.rows[i].cells.length; j++) {
+                var contenido = table.rows[i].cells[j].textContent;
+                row.push(contenido);
+            }
+            rows.push(row);
+        }
+
+        // Obtener el importe total del carrito
+        var total = document.querySelector('.total_carro').textContent;
+
+        var docDefinition = {
+            content: [
+                {text: 'Resumen del pedido', style: 'header', alignment: 'center'}, // Centra el título
+                {
+                    table: {
+                        headerRows: 1, // Solo una fila como encabezado
+                        widths: ['*', '*', '*'], // Distribuye uniformemente el ancho de las columnas
+                        body: [
+                            [{text: 'Producto', style: 'tableHeader', alignment: 'center'}, {text: 'Cantidad', style: 'tableHeader', alignment: 'center'}, {text: 'Sub-Total', style: 'tableHeader', alignment: 'center'}], // Encabezado de las columnas
+                            ...rows // Filas de datos
+                        ]
+                    },
+                    alignment: 'center' // Centra la tabla
+                },
+                {text: total, style: 'total', alignment: 'right'} //Inserta el total
+            ],
+            styles: {
+                header: {fontSize: 18, bold: true, margin: [0, 0, 0, 10]},
+                footer: {fontSize: 10, italic: true},
+                total: {fontSize: 14, bold: true, margin: [0, 10, 0, 0]},
+                tableHeader: { bold: true, fillColor: '#CCCCCC' } // Estilo para los encabezados de la tabla
+            }
+        };
+
+        // Mostrar docDefinition en la consola
+        console.log(docDefinition);
+
+        // Crear el PDF
+        pdfMake.createPdf(docDefinition).download('Compra.pdf');
+    } catch (error) {
+        console.error("Error en la generación del PDF:", error);
+        alert("Error en la generación del PDF. Consulta la consola para más detalles.");
+    }
+};

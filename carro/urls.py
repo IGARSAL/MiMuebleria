@@ -3,7 +3,6 @@ from .views import AgregarProductoView, EliminarProductoView, DisminuirProductoV
 
 app_name="carro"
 
-
 urlpatterns = [
     path('agregar/<int:producto_id>/', AgregarProductoView.as_view(), name='agregar_producto'),
     path('eliminar/<int:producto_id>/', EliminarProductoView.as_view(), name='eliminar_producto'),

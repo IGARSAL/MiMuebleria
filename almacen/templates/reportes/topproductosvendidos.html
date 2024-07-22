@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Productos más Vendidos {% endblock %}
+{% block content %}
+<h1> Productos Más Vendidos </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Productos</th>
+            <th>Ventas Totales</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+            <tr>
+                <td>{{ producto.nomProduct }}</td>
+                <td>{{ producto.ventas_totales }}</td>
+            </tr>
+        {% endfor %}    
+    </tbody>
+</table>
+{% endblock %}
