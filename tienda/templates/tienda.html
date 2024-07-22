@@ -24,6 +24,7 @@
                             {% if producto.descuento > 0 %}
                                 <p class="lead text-secondary">
                                     <del>$ {{ producto.precio }}</del> <!-- Precio original tachado -->
+                                    <br>
                                     $ {{ producto.precio_descuento }}
                                 </p>
                                 <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
