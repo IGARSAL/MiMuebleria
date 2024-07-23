@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
-from .models import Producto  # Asegúrate de importar tu modelo Producto
+from .models import Producto, CategoriaProd # Asegúrate de importar tu modelo Producto
 from decimal import Decimal, ROUND_HALF_UP  # Importa Decimal y el método de redondeo adecuado
 from django.conf import settings
 
@@ -61,3 +61,26 @@ class TiendaView(View):
             return JsonResponse(productos_data, safe=False)
         
         return render(request, "tienda.html", {"productos": productos})
+    
+class CategoriaView(View):
+    def get(self, request, categoria_id=None):
+        query = request.GET.get('q', '')
+        categorias = CategoriaProd.objects.all()
+        productos = Producto.objects.all()
+
+        if categoria_id:
+            categoria = CategoriaProd.objects.get(id=categoria_id)
+            productos = productos.filter(categorias=categoria)
+        else:
+            categoria = None
+
+        if query:
+            productos = productos.filter(nomProduct__icontains=query)
+
+        context = {
+            'categoria': categoria,
+            'productos': productos,
+            'categorias': categorias,
+            'query': query
+        }
+        return render(request, "categoria.html", context)

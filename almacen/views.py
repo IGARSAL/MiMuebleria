@@ -8,11 +8,13 @@ from tienda.models import Producto, ReporteVentas
 from .models import Pedido, LineaPedido
 from carro.carro import Carro
 from django.views.generic import ListView
+from django.shortcuts import render
+
 
 class ProcesarPedido(LoginRequiredMixin, View):
     login_url = '/adminApp/login'
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         carro = Carro(request)
         pedido = Pedido.objects.create(user=request.user)
         lineas_pedido = []
@@ -21,6 +23,9 @@ class ProcesarPedido(LoginRequiredMixin, View):
         try:
             with transaction.atomic():
                 for key, value in carro.carro.items():
+                    print(f"Procesando producto con id {key}")  # Debugging
+                    print(f"Valor en carrito: {value}")  # Debugging
+
                     cantidad = int(value["stock"])
                     precio = float(value["precio"])
                     total_linea = cantidad * precio
@@ -28,13 +33,16 @@ class ProcesarPedido(LoginRequiredMixin, View):
 
                     try:
                         producto = Producto.objects.get(id=key)
+                        print(f"Producto encontrado: {producto.nomProduct} con stock {producto.stock}")  # Debugging
                         if producto.stock < cantidad:
                             messages.error(request, f"No existen suficientes productos en almacen para {producto.nomProduct}")
+                            transaction.set_rollback(True)
                             return redirect("inicio")
 
                         producto.stock -= cantidad
                         producto.ventas_totales += cantidad
                         producto.save()
+                        print(f"Producto {producto.nomProduct} actualizado: stock {producto.stock}, ventas_totales {producto.ventas_totales}")  # Debugging
 
                         lineas_pedido.append(LineaPedido(
                             producto=producto,
@@ -55,9 +63,16 @@ class ProcesarPedido(LoginRequiredMixin, View):
                         transaction.set_rollback(True)
                         return redirect("inicio")
 
-                LineaPedido.objects.bulk_create(lineas_pedido)
+                print("Guardando líneas de pedido...")  # Debugging
+                if lineas_pedido:
+                    LineaPedido.objects.bulk_create(lineas_pedido)
+                    print("Líneas de pedido guardadas.")  # Debugging
+                else:
+                    print("No hay líneas de pedido para guardar.")  # Debugging
+
                 pedido.total_pedido = total_pedido
                 pedido.save()
+                print(f"Pedido guardado con total: {pedido.total_pedido}")  # Debugging
 
                 # Vaciar el carrito después de procesar el pedido
                 carro.vaciar_carro()
@@ -68,6 +83,7 @@ class ProcesarPedido(LoginRequiredMixin, View):
 
         except Exception as e:
             messages.error(request, f"Se produjo un error al procesar el pedido: {str(e)}")
+            print(f"Error: {e}")  # Debugging
             return redirect("home")
         
 class TopProductosVendidos(ListView):
@@ -77,4 +93,6 @@ class TopProductosVendidos(ListView):
 
     def get_queryset(self):
         return Producto.objects.all().order_by('-ventas_totales')[:10]
+    
+
 

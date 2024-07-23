@@ -25,8 +25,10 @@
                 <td><a href="#">LOOKBOOK</a></td>
                 <td><a href="#">BLOG</a></td>
                 <td><a href="#">CONTACT</a></td>
-                <td style="width: 50%; text-align: right;"><input type="text" id="buscar" required placeholder="Muebles"></td>
+                <form method="get" action="{% url 'categoria_view' %}">
+                <td style="width: 50%; text-align: right;"><input type="text" name="q" id="buscar" value="{{ query }}" placeholder="Buscar productos..."></td>
                 <td><button><img src="{% static 'miMuebleria/media/logos/search.png' %}" alt="Buscar"></button></td>
+                </form>
                 <td><button><img src="{% static 'miMuebleria/media/logos/heart.png' %}" alt="Favoritos"></button></td>
                 <td><a href="{% url 'login' %}"><button><img src="{% static 'miMuebleria/media/logos/perfil.png' %}" class="perfil"></a></button>  
                 </td>

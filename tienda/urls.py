@@ -1,10 +1,12 @@
 from django.urls import path
 from django.conf import settings
-from tienda.views import TiendaView, ProductosJsonView
+from .views import TiendaView, ProductosJsonView, CategoriaView
 from django.conf.urls.static import static
 from django.urls import path
 
 urlpatterns = [
     path('', TiendaView.as_view(), name='tienda'),
     path('productos/', ProductosJsonView.as_view(), name='productos_json'),
+    path('categoria/', CategoriaView.as_view(), name='categoria_view'),
+    path('categoria/<int:categoria_id>/', CategoriaView.as_view(), name='categoria_view'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
