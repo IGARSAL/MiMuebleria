@@ -11,7 +11,11 @@
             <div class="row" style="height: max-content;">
                 {% for producto in productos %}
                 <div class="col-lg-3">
+<<<<<<< HEAD
                     <div class="card text-center shadow" style="height: max-content; margin: 5px 5px;">
+=======
+                    <div class="card text-center shadow " style="height: 400px; margin: 5px 5px;">
+>>>>>>> 9dad47f5742a969a9c7821df5ddce062dc53dc81
                         {% if producto.imagen1 %}
                         <img src="{{ MEDIA_URL }}{{ producto.imagen1.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
                         {% else %}
@@ -24,6 +28,7 @@
                             {% if producto.descuento > 0 %}
                                 <p class="lead text-secondary">
                                     <del>$ {{ producto.precio }}</del> <!-- Precio original tachado -->
+                                    <br>
                                     $ {{ producto.precio_descuento }}
                                 </p>
                                 <a class="lead text-secondary">{{ producto.descuento }}% Descuento</a>
