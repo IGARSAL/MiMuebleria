@@ -1,9 +1,10 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from django.views import View
-from .models import Producto, CategoriaProd # Asegúrate de importar tu modelo Producto
+from .models import Producto, CategoriaProd 
 from decimal import Decimal, ROUND_HALF_UP  # Importa Decimal y el método de redondeo adecuado
+from almacen.models import Pedido
 from django.conf import settings
+from django.shortcuts import render, get_object_or_404
 
 class ProductosJsonView(View):
     def get(self, request):
@@ -84,3 +85,18 @@ class CategoriaView(View):
             'query': query
         }
         return render(request, "categoria.html", context)
+
+
+class ConfirmacionPedidoView(View):
+    def get(self, request, pedido_id):
+        pedido = get_object_or_404(Pedido, id=pedido_id, user=request.user)
+        lineas_pedido = pedido.lineapedido_set.all()
+        total_pedido = sum(linea.total_pedido for linea in lineas_pedido)
+        context = {
+            'pedido': pedido,
+            'lineas_pedido': lineas_pedido,
+            'total_pedido': total_pedido,
+            
+        }
+        return render(request, 'confirmacion_pedido.html', context)
+

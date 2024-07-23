@@ -1,0 +1,19 @@
+<body>
+    <h1>Confirmación de Pedido</h1>
+    <p>Pedido Número: {{ pedido.id }}</p>
+    <p>Estado: {{ pedido.estado }}</p>
+    <p>Total:  ${{ total_pedido }}</p>
+
+    <h2>Detalles del Pedido</h2>
+    <ul>
+        {% for linea in lineas_pedido %}
+            <li>
+                Producto: {{ linea.producto.nomProduct }} <br>
+                Cantidad: {{ linea.cantidadVendida }} <br>
+                Precio: ${{ linea.total_pedido }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'tienda' %}">Volver a la tienda</a>
+    <p>Gracias por tu compra, {{ request.user.username }}!</p>
+</body>

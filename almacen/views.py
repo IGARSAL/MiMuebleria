@@ -3,13 +3,14 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.contrib import messages
-from django.db import transaction
 from tienda.models import Producto, ReporteVentas
 from .models import Pedido, LineaPedido
 from carro.carro import Carro
 from django.views.generic import ListView
+from tienda.models import CategoriaProd
 from django.shortcuts import render
-
+from django.http import JsonResponse
+from decimal import Decimal, ROUND_HALF_UP 
 
 class ProcesarPedido(LoginRequiredMixin, View):
     login_url = '/adminApp/login'
@@ -20,79 +21,88 @@ class ProcesarPedido(LoginRequiredMixin, View):
         lineas_pedido = []
         total_pedido = 0
 
-        try:
-            with transaction.atomic():
-                for key, value in carro.carro.items():
-                    print(f"Procesando producto con id {key}")  # Debugging
-                    print(f"Valor en carrito: {value}")  # Debugging
 
-                    cantidad = int(value["stock"])
-                    precio = float(value["precio"])
-                    total_linea = cantidad * precio
-                    total_pedido += total_linea
+        for key, value in carro.carro.items():
+            print(f"Procesando producto con id {key}")  # Debugging
+            print(f"Valor en carrito: {value}")  # Debugging
 
-                    try:
-                        producto = Producto.objects.get(id=key)
-                        print(f"Producto encontrado: {producto.nomProduct} con stock {producto.stock}")  # Debugging
-                        if producto.stock < cantidad:
-                            messages.error(request, f"No existen suficientes productos en almacen para {producto.nomProduct}")
-                            transaction.set_rollback(True)
-                            return redirect("inicio")
+            cantidad = int(value["stock"])
+            precio = float(value["precio"])
+            total_linea = cantidad * precio
+            total_pedido += total_linea
 
-                        producto.stock -= cantidad
-                        producto.ventas_totales += cantidad
-                        producto.save()
-                        print(f"Producto {producto.nomProduct} actualizado: stock {producto.stock}, ventas_totales {producto.ventas_totales}")  # Debugging
+            try:
+                producto = Producto.objects.get(id=key)
+                print(f"Producto encontrado: {producto.nomProduct} con stock {producto.stock}")  # Debugging
+                if producto.stock < cantidad:
+                    messages.error(request, f"No existen suficientes productos en almacen para {producto.nomProduct}")
+                    return redirect("home")
 
-                        lineas_pedido.append(LineaPedido(
-                            producto=producto,
-                            cantidadVendida=cantidad,
-                            total_pedido=total_linea,
-                            pedido=pedido,
-                        ))
+                producto.stock -= cantidad
+                producto.ventas_totales += cantidad
+                producto.save()
+                print(f"Producto {producto.nomProduct} actualizado: stock {producto.stock}, ventas_totales {producto.ventas_totales}")  # Debugging
 
-                        ReporteVentas.objects.create(
-                            producto=producto,
-                            usuario=request.user,
-                            cantidad=cantidad,
-                            total_venta=total_linea,
-                        )
+                lineas_pedido.append(LineaPedido(
+                    producto=producto,
+                    cantidadVendida=cantidad,
+                    total_pedido=total_linea,
+                    pedido=pedido,
+                ))
 
-                    except Producto.DoesNotExist:
-                        messages.error(request, f"El producto con id {key} no existe.")
-                        transaction.set_rollback(True)
-                        return redirect("inicio")
+                ReporteVentas.objects.create(
+                    producto=producto,
+                    usuario=request.user,
+                    cantidad=cantidad,
+                    total_venta=total_linea,
+                )
 
-                print("Guardando líneas de pedido...")  # Debugging
-                if lineas_pedido:
-                    LineaPedido.objects.bulk_create(lineas_pedido)
-                    print("Líneas de pedido guardadas.")  # Debugging
-                else:
-                    print("No hay líneas de pedido para guardar.")  # Debugging
+            except Producto.DoesNotExist:
+                messages.error(request, f"El producto con id {key} no existe.")
+                return redirect("home")
 
-                pedido.total_pedido = total_pedido
-                pedido.save()
-                print(f"Pedido guardado con total: {pedido.total_pedido}")  # Debugging
+        print("Guardando líneas de pedido...")  # Debugging
+        if lineas_pedido:
+            LineaPedido.objects.bulk_create(lineas_pedido)
+            print("Líneas de pedido guardadas.")  # Debugging
+        else:
+            print("No hay líneas de pedido para guardar.")  # Debugging
 
-                # Vaciar el carrito después de procesar el pedido
-                carro.vaciar_carro()
+        pedido.total_pedido = total_pedido
+        pedido.save()
+        print(f"Pedido guardado con total: {pedido.total_pedido}")  # Debugging
 
-                # Redirigir al usuario a una página de confirmación o similar
-                messages.success(request, "Pedido procesado exitosamente.")
-                return redirect("pagina_de_confirmacion")
+        # Vaciar el carrito después de procesar el pedido
+        carro.vaciar_carro()
+        # Redirigir al usuario a una página de confirmación o similar
+        messages.success(request, "Pedido procesado exitosamente.")
+        return redirect('confirmacion_pedido', pedido_id=pedido.id)
+      
+       
+class CategoriaView(View):
+    def get(self, request, categoria_id):
+        categoria=CategoriaProd.objects.get(id=categoria_id)
+        producto=producto.objects.filter(categorias=categoria)
+        return render(request, "almacen/categoria.html", {'categoria': categoria, "producto": producto})
 
-        except Exception as e:
-            messages.error(request, f"Se produjo un error al procesar el pedido: {str(e)}")
-            print(f"Error: {e}")  # Debugging
-            return redirect("home")
-        
-class TopProductosVendidos(ListView):
-    model =Producto
-    template_name = 'reportes/topproductos.html'
-    context_object_name = 'productos'
-
-    def get_queryset(self):
-        return Producto.objects.all().order_by('-ventas_totales')[:10]
+class TopProductosVendidos(View):
+    def get_queryset(self, request):
+        productos = Producto.objects.all().order_by('-ventas_totales')[:2]
+        productos_data = []
+        for producto in productos:
+            if producto.descuento > 0:
+                descuento_decimal = Decimal(producto.descuento) / Decimal(100)
+                precio_descuento = (producto.precio * (Decimal(1) - descuento_decimal)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+            else:
+                precio_descuento = producto.precio
     
+        productos_data.append({
+        'id': producto.id,
+        'nombre': producto.nomProduct,
+        'precio': producto.precio,
+        'precio_descuento': precio_descuento,
+        'descuento': producto.descuento,
+        'imagen1': producto.imagen1.url if producto.imagen1 else None,
+            })
 
-
+        return JsonResponse(productos_data, safe=False)

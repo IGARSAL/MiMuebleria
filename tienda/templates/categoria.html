@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% if categoria %}{{ categoria.nombre }}{% else %}Todos los Productos{% endif %}</title>
+    <title>{% if categoria %}{{ categoria.nombreCatProd}}{% else %}Todos los Productos{% endif %}</title>
 </head>
 <body>
-    <h1>{% if categoria %}Productos en {{ categoria.nombre }}{% else %}Todos los Productos{% endif %}</h1>
+    <h1>{% if categoria %}Productos en {{ categoria.nombreCatProd }}{% else %}Todos los Productos{% endif %}</h1>
 
     <form method="get" action="{% url 'categoria_view' %}">
         <input type="text" name="q" value="{{ query }}" placeholder="Buscar productos...">
         <button type="submit">Buscar</button>
     </form>
 
-    <!-- <h2>Categorías</h2>
+    <h2>Categorías</h2>
     <ul>
         {% for cat in categorias %}
-            <li><a href="{% url 'categoria_view' cat.id %}">{{ cat.nombre }}</a></li>
+            <a href="{% url 'categoria_view' cat.id %}">{{ cat.nombreCatProd }}</a>
         {% endfor %}
-    </ul> -->
+    </ul> 
 
     <h2>Productos</h2>
     <ul>

@@ -51,12 +51,12 @@
                 <td class="text1" style="width: 20%; background-color: #e8e4e4; color: #795548;"><h1>OUTDOOR FURNITURE SYDNEY</h1><A>VIEW DETAIL</A></td>
                 <td class="img2" style="width: 20%; background-color: aliceblue;"><img src="{% static 'miMuebleria\media\collage\taburete.png' %}" style="width:100%;" ></td>
                 <td class="text3" style="width: 20%; background-color: rosybrown; color: #db0075;"><h1>DESING BY UMBRA MODERN 2015</h1><a>VIEW DETAIL</a></td>
-                <td class="img3" style="width: 20%; height: 20px; background-color: rosybrown;"><img src="{% static 'miMuebleria\media\collage\sillon-horizontal.png' %}" style="with:25%;"></td>
+                <td class="img3" style="width: 20%; height: 20px; background-color: rosybrown;"><img src="{% static 'miMuebleria\media\collage\sillon-horizontal.png' %}"></td>
 
             </tr>
             <tr>
                 <td class="img1" style="width: 20%; background-color: #e8e4e4;"><img src="{% static 'miMuebleria\media\collage\silla-vertical.png' %}" style="width: 90%;"></td>
-                <td style="with:30%;" colspan="2" class="img4" style="background-color: #d0eaee; width:33%;">  
+                <td colspan="2" class="img4" style="background-color: #d0eaee; width:33%;">  
                         <H1 style="color: #5000ff;">CERAMICS JOSH HERMAN</H1>
                         <a style="color: #5000ff;">VIEW DETAIL</a>
                         <img src="{% static 'miMuebleria\media\collage\jarrones.png' %}" style="width: 100%;">
@@ -69,7 +69,13 @@
     <div class="top-products">
         <h1>TOP PRODUCTS</h1>
         <A style="font-size: x-large;"><i>the best of 2024</i></A>
-<p> aqui se generarar los productos de la base de datos</p>
+        <div class="col-lg-3">
+            <div class="sticky-top" style="top: 20px;">
+           
+                    {% include "reportes/topproductosvendidos.html" %}
+             
+            </div>
+        </div>    
 <div class="vertical-container">
     <p class="vertical-text">UMBRA FURNITURE</p>
 </div>
