@@ -53,3 +53,49 @@
     font-size: small;
 
 }
+.texto-superpuesto-conf {
+    /* position: absolute;  Posiciona el texto absolutamente dentro del contenedor */
+    top: 25%; /* Centra verticalmente el texto */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    background-color: rgba(73, 137, 201, 0.5);
+}
+.tabla-superpuesto{
+    position: absolute;
+    justify-content: center;
+    top:25%;
+    text-align: center;
+
+}
+.categorias{
+    color: black;
+    background-color: azure;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-collapse:collapse ;
+}
+
+.productos{
+    color: black;
+    background-color: antiquewhite;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-collapse:collapse ;
+}
+.organizador{
+    padding: 0%;
+    justify-content: center;
+    text-align: center;
+    background-color: azure;
+}
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+}
+.sub1{
+    flex:1;
+    text-align: center;
+    background-color: aliceblue;
+}
