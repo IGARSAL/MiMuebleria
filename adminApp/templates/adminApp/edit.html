@@ -4,16 +4,28 @@
 <img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
 
 <div class="safe">
-    <div class="texto-superpuesto0">
-    <h1>Ediccion de cuentas de usuario</h1>
-    <p>Puedes utilizar el siguiente formulario:</p>
-    <form method="post" enctype="multipart/form-data">
-        {{ user_form.as_p }}
-        {{ cliente_form.as_p }}
-        {% csrf_token %}
+    <div class="texto-superpuesto0" style="margin-top:5%;">
+        <h1>Ediccion de cuentas de usuario</h1>
+        <p>Puedes utilizar el siguiente formulario:</p>
+        <form method="post" enctype="multipart/form-data">
+        <div class="row justify-content-between">
+           
+            <div class="col-4">
+              Datos del cliente
+              {{ user_form.as_p }}
+            </div>
+            <div class="col-4">
+              Direccion del cliente 
+              {{ cliente_form.as_p }}
+            </div>
+            
+        </div>
         <p><input type="submit" value="Guarda los cambios"></p>
-    </form>
-</div>
+        {% csrf_token %}
+            </form>
+        
+        <a href="{% url 'edit' %}">cambio de contraseña</a>
+    </div>
 </div>
 
 {% endblock %}
