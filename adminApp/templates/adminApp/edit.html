@@ -24,7 +24,8 @@
         {% csrf_token %}
             </form>
         
-        <a href="{% url 'edit' %}">cambio de contraseña</a>
+        <a href="{% url 'edit' %}"><button>cambio de contraseña</button></a>
+        <a href="{% url 'delete_confirm' %}"><button>eliminar cuenta</button></a>
     </div>
 </div>
 
