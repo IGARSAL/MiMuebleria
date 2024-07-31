@@ -6,7 +6,6 @@
 
 
 <body>
-<div class="container">
    
     <div class="slide">
         <div class="slide-inner">
@@ -66,9 +65,10 @@
             </tr>
         </table>
     </div>
-    <div class="top-products">
-        <h1>TOP PRODUCTS</h1>
-        <A style="font-size: x-large;"><i>the best of 2024</i></A>
+<div class="top-products">
+    
+        <h1>Productos Más Vendidos</h1> 
+        
         <div class="col-lg-3">
             <div class="card text-center shadow" style="height: 400px; margin: 5px 5px;">
                 {% if producto.imagen1 %}
@@ -92,12 +92,10 @@
                 </div>
             </div>
         </div>  
-        </div>    
-<div class="vertical-container">
-    <p class="vertical-text">UMBRA FURNITURE</p>
+        
+  
 </div>
 
-    </div>
     
     <table class="contact0">
         <tr>
@@ -107,11 +105,11 @@
                     <h1>HOT DEALS THIS WEEK</h1>
                     <a>on the other hand,we denounce with righteous indignation and dislike men who are so beguiled and demoralized </a>
                     <br>
-                    <button type="submit"><b>SHOP NOW ></b></button>
+                    <a href="{% url 'tienda' %}"><button type="submit"><b>SHOP NOW ></b></button></a>
                 </div>  
             </td>
             <td class="blanco">
-                <div class="sub1">
+                <div class="sub10">
                     <h1>SALE UP 50%</h1>
                     <figure>
                     <img src="{% static 'miMuebleria\media\collage\sillon-oferta-sinfondo.png' %}"class="azul" alt="FRITZ HANSEN BROWN SOFA">
