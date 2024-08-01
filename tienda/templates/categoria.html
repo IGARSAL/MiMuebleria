@@ -1,4 +1,5 @@
 
+
 {% extends "base.html" %}
 {% load static%}
 {% block title %} {% if categoria %}{{ categoria.nombreCatProd}}{% else %}Todos los Productos{% endif %}{% endblock %}
@@ -7,10 +8,6 @@
 
     <h1>{% if categoria %}Productos en {{ categoria.nombreCatProd }}{% else %}Todos los Productos{% endif %}</h1>
 
-    <form method="get" action="{% url 'categoria_view' %}">
-        <input type="text" name="q" value="{{ query }}" placeholder="Buscar productos...">
-        <button type="submit">Buscar</button>
-    </form>
         <div class="row g-0 text-center">
             <div clas="col-6 col-md-4 neutro" style="background-color:azure;">
                 <div class="sticky-top" style="top: 20px;">
@@ -35,13 +32,25 @@
                     <div class="col-lg-3">
                         <div class="card text-center shadow" style="height: 500px; margin: 5px 5px;">
                             {% if producto.imagen1 %}
-                            <img src="{{ MEDIA_URL }}{{ producto.imagen1.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
+                                <img src="{{ MEDIA_URL }}{{ producto.imagen1.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%; display:block;">
+                                {% if producto.descuento > 0 %}
+                                    <div class="etiqueta"> {{producto.descuento }} % </div>  <!-- Etiqueta de descuento -->
+                                {% endif %}
                             {% elif producto.imagen2 %}
-                            <img src="{{ MEDIA_URL }}{{ producto.imagen2.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
+                                <img src="{{ MEDIA_URL }}{{ producto.imagen2.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%;display:block;">
+                                {% if producto.descuento > 0 %}
+                                    <div class="etiqueta"> {{producto.descuento }} % </div>  <!-- Etiqueta de descuento -->
+                                {% endif %}
                             {% elif producto.imagen3 %}
-                            <img src="{{ MEDIA_URL }}{{ producto.imagen3.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
+                                <img src="{{ MEDIA_URL }}{{ producto.imagen3.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%;display:block;">
+                                {% if producto.descuento > 0 %}
+                                    <div class="etiqueta"> {{producto.descuento }} % </div>  <!-- Etiqueta de descuento -->
+                                {% endif %}
                             {% else %}
-                            <img src="{% static 'path/to/default-image.jpg' %}" alt="Imagen no disponible" class="card-img-top" style="height: 40%">
+                                <img src="{% static 'path/to/default-image.jpg' %}" alt="Imagen no disponible" class="card-img-top" style="height: 40%;display:block;">
+                                {% if producto.descuento > 0 %}
+                                    <div class="etiqueta"> {{producto.descuento }} % </div>  <!-- Etiqueta de descuento -->
+                                {% endif %}
                             {% endif %}
                             <div class="card-body">
                                 <h6 class="card-title text-primary lead">
@@ -86,7 +95,28 @@
                                     {% if producto.stock > 0 %}
                                     <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color: rgb(180, 95, 95);">Agregar</button>
                                     {% else %}
-                                    <button type="submit" class="btn btn-secondary" style="background-color: gray ; border-color: black ;">Agotado</button>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: gray ; border-color: black ;">
+                                            Agotado
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Producto Agotado</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>lo sentimos ya no contamos con stock del producto, pronto tendremos mas</p> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                     {% endif %}
                                 </form>
                             </div>
