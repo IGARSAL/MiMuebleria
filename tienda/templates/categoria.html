@@ -7,10 +7,7 @@
 
     <h1>{% if categoria %}Productos en {{ categoria.nombreCatProd }}{% else %}Todos los Productos{% endif %}</h1>
 
-    <form method="get" action="{% url 'categoria_view' %}">
-        <input type="text" name="q" value="{{ query }}" placeholder="Buscar productos...">
-        <button type="submit">Buscar</button>
-    </form>
+
         <div class="row g-0 text-center">
             <div clas="col-6 col-md-4 neutro" style="background-color:azure;">
                 <div class="sticky-top" style="top: 20px;">

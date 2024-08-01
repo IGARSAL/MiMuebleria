@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from .models import Cliente
+from tienda.models import Producto
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -42,4 +43,8 @@ class ClienteEditForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ['telefono', 'codigo_postal', 'identiFed', 'colonia', 'direccion', 'no_Ext', 'no_int']
-        
+
+class dataForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = "__all__"

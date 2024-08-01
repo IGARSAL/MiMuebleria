@@ -1,0 +1,32 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+<!-- Carga los archivos estáticos como CSS, JS, etc. -->
+
+{% block content %}
+
+
+<div class="spinner-border text-primary" role="status" id="spinner" style="display: none;">
+    <span class="visually-hidden">Cargando...</span>
+</div>
+
+<div id="data-box" class="container">
+    <div class="row">
+        <form id="uploadForm" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">Archivos: </label>
+                <div class="col-md-8">
+                    <input type="file" name="csv_file" required="True" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-xs-12 col-md-3" style="margin-bottom: 10px;">
+                <button class="btn btn-primary"> <span class="glyphicon-upload" style="margin-right: 5px;"></span>Subir</button>
+            </div>ath
+            </div>
+        </form>
+    </div> 
+</div>
+
+{% endblock %}

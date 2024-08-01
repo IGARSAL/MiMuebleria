@@ -9,6 +9,14 @@ from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, logout, authenticate
+from django.views.generic import ListView
+from tienda.models import Producto
+from .forms import dataForm
+from django.http import FileResponse
+from django.urls import reverse
+from openpyxl import Workbook
+import csv
+import logging
 
 class CerrarSesionView(View):
     def get(self, request):
@@ -66,3 +74,142 @@ class EditView(LoginRequiredMixin, View):
             messages.error(request, 'Error al actualizar el perfil')
             
         return render(request, 'adminApp/edit.html', {'user_form': user_form, 'cliente_form': cliente_form})
+
+logger = logging.getLogger(__name__)
+
+class dataView(ListView):
+    template_name = 'upload/csv.html'
+    model = Producto
+    context_object_name = 'obj'
+
+    def get(self, request, **kwargs):
+        if not self.request.user.has_module_perms('adminApp.view_Producto'):
+            return redirect('login')
+        return super().get(request, **kwargs)
+
+def cargar_csv(request):
+    template_name = "upload/upload_cvs.html"
+    error_message = None
+    dato_erroneo = []
+
+    if request.method == "POST":
+        csv_file = request.FILES.get("csv_file")
+        if csv_file:
+            try:
+                    csv_file.open('r')
+                    reader = csv.reader(csv_file.read().decode('utf-8').splitlines())
+                    for line in reader:
+                        fileds = line
+                        if len(fileds) > 1:
+                            data_dict = {
+                                "nomProduct": fileds[0],
+                                "categorias_id": fileds[1],
+                                "precio": fileds[2],
+                                "imagen1": fileds[3],
+                                "imagen2": fileds[4],
+                                "imagen3": fileds[5],
+                                "ventas_totales": fileds[6],
+                                "descuento": fileds[7],
+                                "stock": fileds[8],
+                                "sku": fileds[9],
+                                
+                            }
+                            if not is_duplicate(data_dict["sku"]) and validar_datos(data_dict):
+                                guardar_producto(data_dict)
+                            else:
+                                dato_erroneo.append(data_dict)
+            except Exception as ex:
+                logger.error(f"Error al procesar el archivo CSV: {repr(ex)}")
+                error_message = "Error al procesar el archivo CSV."
+        else: 
+            error_message = "No se ha cargado ningún archivo"
+    if dato_erroneo:
+        #Genera archivo en Excel si hay datos erróneos
+        excel_file = generate_excel(dato_erroneo)
+        excel_file_path ='errores.xlsx'
+        excel_file.save(excel_file_path)
+    return render(request, template_name, {'error_message': error_message})
+
+def is_duplicate(sku):
+
+    return Producto.objects.filter(sku=sku).exists()
+def validar_datos(data):
+    try:
+        if not data["nomProduct"]:
+            raise ValueError("El nombre del producto esta vacío.")
+        
+        if not data["categorias_id"]:
+            raise ValueError("La categoría está vacía.")
+        
+        precio = float(data["precio"])
+        if precio <=0:
+            raise ValueError("El precio debe ser un número positivo")
+        
+        if not data["imagen1"]:
+            data["imagaen1"] = 'path/to/default-image.jpg'
+        
+        if not data["imagen2"]:
+            data["imagaen2"] = 'path/to/default-image.jpg'
+        
+        if not data["imagen3"]:
+            data["imagaen3"] = 'path/to/default-image.jpg'
+        
+        ventas_totales = int(data["ventas_totales"])
+        if ventas_totales < 0:
+            raise ValueError("Las ventas totales no pueden ser negativas.")
+        
+        descuento = float(data["descuento"])
+        if not(0 <= descuento <= 100):
+            raise ValueError("El descuento debe estar entre 0 y 100.")
+        
+        stock = int(data["stock"])
+        if stock < 0:
+            raise ValueError("El stock no puede ser negativo.")
+        
+        if not data["sku"]:
+            raise ValueError("El SKU está vacío")
+        return True
+    except (ValueError, TypeError) as e:
+        logger.error(f"Error de validación: {e}")
+        return False
+
+def guardar_producto(data):
+    producto = Producto(
+        nomProducto=data["nomProduct"],
+        categorias=data["categorias_id"],
+        precio=data["precio"],
+        imagen1=data["imagen1"],
+        imagen2=data["imagen2"],
+        imagen3=data["imagen3"],
+        ventas_totales=data["ventas_totales"],
+        desceunto=data["descuento"],
+        stock=data["stock"],
+        sku=data["sku"]
+    )
+    producto.save()
+
+def generate_excel(data):
+
+    wb = Workbook()
+    ws = wb.active
+
+    for item in data:
+        ws.append([item.get("nomProduct", ""), 
+                   item.get("categorias", ""),
+                   item.get("precio", ""),
+                   item.get("imagen1", ""), 
+                   item.get("imagen2", ""), 
+                   item.get("imagen3", ""), 
+                   item.get("ventas_totales", ""),
+                   item.get("descuento", ""),
+                   item.get("stock", ""),
+                  item.get("sku", "")
+                  ])
+    return wb
+
+def descargar_excel(request):
+    excel_file_path = 'errores.xlsx'
+    try:
+        return FileResponse(open(excel_file_path, 'rb'), as_attachment=True)
+    except FileNotFoundError:
+        return render(request, 'files/error.html', {'message': 'Archivo no encontrado'})
