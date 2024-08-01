@@ -138,3 +138,17 @@
     justify-content: center;
     text-align: center;
 }
+.etiqueta {
+    position: absolute; /* Posiciona la etiqueta de forma absoluta respecto al contenedor */
+    top: 0; /* Coloca la etiqueta en la parte superior del contenedor */
+    left: 0; /* Coloca la etiqueta en la parte izquierda del contenedor */
+    background-color: red; /* Color de fondo de la etiqueta */
+    color: white; /* Color del texto de la etiqueta */
+    padding: 5px 10px; /* Espaciado interno de la etiqueta */
+    font-size: 14px; /* Tamaño de la fuente del texto de descuento */
+    font-weight: bold; /* Hace el texto en negrita */
+    transform: translate(-50%, 50%) rotate(-45deg); /* Ajusta la posición y rota la etiqueta para crear el efecto de triángulo */
+    transform-origin: 0 0; /* Ajusta el punto de origen de la rotación */
+    border-radius: 3px; /* Bordes redondeados de la etiqueta */
+    
+}
