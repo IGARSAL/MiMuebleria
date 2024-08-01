@@ -11,7 +11,7 @@
     justify-content: center;
 }
 .safe{
-    width: 50%;
+    width: 100%;
     margin-left: 25%;
     text-align: left;
     justify-content: left;
@@ -66,24 +66,8 @@
     text-align: center;
 
 }
-.categorias{
-    color: black;
-    background-color: azure;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    border-collapse:collapse ;
-    
-}
-.categorias td{
-    color: black;
-    background-color:antiquewhite;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    border-collapse:collapse ;
 
-}
+
 .columna-arreglada{
     margin-top: 50px;
     position: fixed;
@@ -146,6 +130,11 @@
     border: 5px;
     border-radius: 12px;
     background-color: #FF6F6F;
+    justify-content: center;
+    text-align: center;
+}
+.neutro{
+    padding: 0%;
     justify-content: center;
     text-align: center;
 }
