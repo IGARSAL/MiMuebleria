@@ -3,8 +3,7 @@
 {% block content %}
 <img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
 
-<div class="safe">
-    <div class="texto-superpuesto-edit" >
+    <div class="texto-superpuesto-edit">
         <h1>Ediccion de cuentas de usuario</h1>
         <p>Puedes utilizar el siguiente formulario:</p>
         <form method="post" enctype="multipart/form-data">
@@ -27,6 +26,5 @@
         <a href="{% url 'edit' %}"><button class="opc1">cambio de contraseña</button></a>
         <a href="{% url 'delete_account' %}"><button class="opc2">eliminar cuenta</button></a>
     </div>
-</div>
 
 {% endblock %}
