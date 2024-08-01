@@ -23,7 +23,7 @@
         {% csrf_token %}
             </form>
         <h3><b>Otros Cambios</b></h3>
-        <a href="{% url 'edit' %}"><button class="opc1">cambio de contraseña</button></a>
+        <a href="{% url 'password_reset' %}"><button class="opc1">cambio de contraseña</button></a>
         <a href="{% url 'delete_account' %}"><button class="opc2">eliminar cuenta</button></a>
     </div>
 
