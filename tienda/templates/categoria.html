@@ -81,6 +81,20 @@
                                 </div>
                             </div>
                         </div>
+
+                            <div class="card-footer text-center">
+                                <form method="post" action="{% url 'carro:agregar_producto' producto.id %}">
+                                    {% csrf_token %}
+                                     {% if producto.stock > 0 %}
+                                        <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color: rgb(180, 95, 95);">Agregar</button>
+                                     {% else %}
+                                        <button type="submit" class="btn btn-success" style="background-color: gray ; border-color: black ;">Agotado</button>
+                                     {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     {% endfor %}
                 </div>
             </div>
