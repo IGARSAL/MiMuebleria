@@ -1,4 +1,3 @@
-from django.db.models.query import QuerySet
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
@@ -6,11 +5,11 @@ from django.contrib import messages
 from tienda.models import Producto, ReporteVentas
 from .models import Pedido, LineaPedido
 from carro.carro import Carro
-from django.views.generic import ListView
 from tienda.models import CategoriaProd
 from django.shortcuts import render
 from django.http import JsonResponse
 from decimal import Decimal, ROUND_HALF_UP 
+from django.conf import settings
 
 class ProcesarPedido(LoginRequiredMixin, View):
     login_url = '/adminApp/login'
@@ -85,24 +84,3 @@ class CategoriaView(View):
         producto=producto.objects.filter(categorias=categoria)
         return render(request, "almacen/categoria.html", {'categoria': categoria, "producto": producto})
 
-class TopProductosVendidos(View):
-    def get_queryset(self, request):
-        productos = Producto.objects.all().order_by('-ventas_totales')[:2]
-        productos_data = []
-        for producto in productos:
-            if producto.descuento > 0:
-                descuento_decimal = Decimal(producto.descuento) / Decimal(100)
-                precio_descuento = (producto.precio * (Decimal(1) - descuento_decimal)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-            else:
-                precio_descuento = producto.precio
-    
-        productos_data.append({
-        'id': producto.id,
-        'nombre': producto.nomProduct,
-        'precio': producto.precio,
-        'precio_descuento': precio_descuento,
-        'descuento': producto.descuento,
-        'imagen1': producto.imagen1.url if producto.imagen1 else None,
-            })
-
-        return JsonResponse(productos_data, safe=False)

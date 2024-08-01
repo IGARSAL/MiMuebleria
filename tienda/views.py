@@ -1,16 +1,15 @@
-from django.http import JsonResponse
 from django.views import View
 from .models import Producto, CategoriaProd 
 from decimal import Decimal, ROUND_HALF_UP  # Importa Decimal y el método de redondeo adecuado
 from almacen.models import Pedido
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse, HttpResponse
 
 class ProductosJsonView(View):
     def get(self, request):
-        productos = Producto.objects.all()
+        productos = Producto.objects.all().order_by('-ventas_totales')[:5]
         
-        # Calcular precio con descuento para cada producto
         productos_data = []
         for producto in productos:
             if producto.descuento > 0:
@@ -65,26 +64,42 @@ class TiendaView(View):
     
 class CategoriaView(View):
     def get(self, request, categoria_id=None):
-        query = request.GET.get('q', '')
-        categorias = CategoriaProd.objects.all()
-        productos = Producto.objects.all()
+        try:
+            query = request.GET.get('q', '')
+            categorias = CategoriaProd.objects.all()
+            productos = Producto.objects.all()
 
-        if categoria_id:
-            categoria = CategoriaProd.objects.get(id=categoria_id)
-            productos = productos.filter(categorias=categoria)
-        else:
-            categoria = None
+            if categoria_id:
+                categoria = get_object_or_404(CategoriaProd, id=categoria_id)
+                productos = productos.filter(categorias=categoria)
+            else:
+                categoria = None
 
-        if query:
-            productos = productos.filter(nomProduct__icontains=query)
+            if query:
+                productos = productos.filter(nomProduct__icontains=query)
 
-        context = {
-            'categoria': categoria,
-            'productos': productos,
-            'categorias': categorias,
-            'query': query
-        }
-        return render(request, "categoria.html", context)
+            # Calcular precio con descuento para cada producto
+            for producto in productos:
+                if producto.descuento > 0:
+                    descuento_decimal = Decimal(producto.descuento) / Decimal(100)
+                    precio_descuento = (producto.precio * (Decimal(1) - descuento_decimal)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                else:
+                    precio_descuento = producto.precio
+                producto.precio_descuento = precio_descuento  # Asigna el precio con descuento como un atributo del producto
+
+
+            context = {
+                'categoria': categoria,
+                'productos': productos,
+                'categorias': categorias,
+                'query': query,
+                'MEDIA_URL': settings.MEDIA_ROOT,
+            }
+            return render(request, "categoria.html", context)
+        
+        except Exception as e:
+            return HttpResponse(status=500, content=str(e))
+
 
 
 class ConfirmacionPedidoView(View):

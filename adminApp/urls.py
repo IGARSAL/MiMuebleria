@@ -10,4 +10,5 @@ urlpatterns = [
     path('edit/', EditView.as_view(), name='edit'),
     path('delete/', DeleteUserView.as_view(), name='delete_account'),
      path('cerrar_sesion', CerrarSesionView.as_view(), name="cerrar_sesion"),
+
 ]  

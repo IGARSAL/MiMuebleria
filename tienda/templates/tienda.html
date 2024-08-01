@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}Productos{% endblock %}
 
 {% block content %}
@@ -9,10 +8,11 @@
         <!-- Productos -->
         <div class="col-lg-9">
             <div class="row" style="height: max-content;">
-                                {% for producto in productos %}
+             {% for producto in productos %}
                 <div class="col-lg-3">
                     <div class="card text-center shadow" style="height: 400px; margin: 5px 5px;">
                         {% if producto.imagen1 %}
+                     
                         <img src="{{ MEDIA_URL }}{{ producto.imagen1.url }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%">
                         {% else %}
                         <img src="{% static 'path/to/default-image.jpg' %}" alt="Imagen no disponible" class="card-img-top" style="height: 40%">

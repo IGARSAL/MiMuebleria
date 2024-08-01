@@ -14,9 +14,7 @@ class AgregarProductoView(View):
 
         if cantidad_en_carro < cantidad_disponible:
             carro.agregar(producto)
-            messages.success(request, f'Producto {producto.nomProduct} agregado al carrio.')
-        else:
-            messages.error(request, f'Lo sentidos, no hay suficiente cantidad disponible de {producto.nomProduct}.')
+
 
         return redirect('tienda')
 

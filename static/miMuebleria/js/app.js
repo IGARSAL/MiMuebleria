@@ -1,64 +1,92 @@
-document.addEventListener('DOMContentLoaded', () => {
-    fetchData();
+document.addEventListener('DOMContentLoaded', function() {
+    const loading = document.getElementById('loading');
+    const container = document.getElementById('card-dinamicas');
+    const template = document.getElementById('template-card');
+
+    // Verificar si los elementos están disponibles
+    if (!loading || !container || !template) {
+        console.error('Uno o más elementos del DOM no se encontraron.');
+        return;
+    }
+
+    // Mostrar el spinner mientras se cargan los datos
+    loading.classList.remove('d-none');
+
+    fetch('tienda/productos/')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('La respuesta de la red no fue correcta');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Ocultar el spinner una vez que los datos se han cargado
+            loading.classList.add('d-none');
+            
+            // Limpiar el contenedor antes de agregar productos
+            container.innerHTML = '';
+
+            console.log('Data received:', data); // Para verificar la estructura de los datos
+
+            // Iterar sobre cada producto en los datos obtenidos
+            data.forEach(producto => {
+                console.log('Processing product:', producto); // Para verificar los datos del producto
+
+                // Asegúrate de que los precios sean números
+                const precio = parseFloat(producto.precio);
+                const precioDescuento = parseFloat(producto.precio_descuento);
+
+                // Clonar el contenido del template
+                const clone = document.importNode(template.content, true);
+
+                // Modificar el contenido del clon
+                const card = clone.querySelector('.card');
+                const img = card.querySelector('.card-img-top');
+                const title = card.querySelector('.card-title');
+                const price = card.querySelector('.lead.text-secondary');
+
+                // Configurar la imagen
+                img.src = producto.imagen1 ? producto.imagen1 : 'path/to/default-image.jpg';
+                img.alt = producto.nombre;
+
+                // Configurar el título
+                title.textContent = producto.nombre;
+
+                // Configurar el precio
+                if (producto.descuento > 0) {
+                    const originalPrice = document.createElement('del');
+                    originalPrice.textContent = `$ ${precio.toFixed(2)}`;
+
+                    const discountedPrice = document.createElement('span');
+                    discountedPrice.textContent = ` $ ${precioDescuento.toFixed(2)}`;
+                    discountedPrice.className = 'text-success';  // Añadir clase para destacar el precio con descuento
+
+                    price.innerHTML = ''; // Limpiar el contenido anterior
+                    price.appendChild(originalPrice);
+                    price.appendChild(document.createElement('br'));
+                    price.appendChild(discountedPrice);
+
+                    const discount = document.createElement('span');
+                    discount.className = 'lead text-secondary d-block'; // Cambiar a `span` y añadir clase para estilo
+                    discount.textContent = `${producto.descuento}% Descuento`;
+                    card.querySelector('.card-body').appendChild(discount);
+                } else {
+                    price.textContent = `$ ${precio.toFixed(2)}`;
+                }
+
+                // Añadir el clon al contenedor
+                container.appendChild(clone);
+            });
+        })
+        .catch(error => {
+            // Manejar cualquier error que ocurra durante la petición fetch
+            console.error('Error fetching products:', error);
+            // Ocultar el spinner en caso de error también
+            loading.classList.add('d-none');
+        });
 });
 
-const fetchData = async () => {
-    try {
-        loadingData(true);
-        const res = await fetch("productos/", {
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-        if (!res.ok) {
-            throw new Error('La red no respode');
-        }
-        const data = await res.json();
-        const productos = JSON.parse(data); // Parse the JSON string into an object
-        mostrarCard(productos);
-    } catch (error) {
-        console.error('Error en la obtención de datos:', error);
-    } finally {
-        loadingData(false);
-    }
-};
 
-const mostrarCard = (productos) => {
-    const cards = document.getElementById("card-dinamicas");
-    const templateCard = document.getElementById("template-card").content;
-    const fragment = document.createDocumentFragment();
-    const mediaUrl = document.body.getAttribute('data-media-url');
-
-    productos.forEach((producto) => {
-        const clone = templateCard.cloneNode(true);
-        const precioOriginal = parseFloat(producto.fields.precio);
-        const descuento = parseFloat(producto.fields.descuento);
-        const precioDescuento = parseFloat(producto.fields.descuento);
-        const imagen1Url = producto.fields.imagen1 ? `${mediaUrl}${producto.fields.imagen1}` : '/path/to/default-image.jpg';
-        if (descuento > 0) {
-            const precioDescuento = (precioOriginal * (1 - descuento / 100)).toFixed(2);
-            clone.querySelector("p").textContent = `Precio: $${precioOriginal} - Precio con descuento: $${precioDescuento}`;
-            clone.querySelector("a").textContent = `${descuento}% Descuento`;
-        } else {
-            clone.querySelector("p").textContent = `Precio: $${precioOriginal}`;
-            clone.querySelector("a").textContent = '';
-
-        }
-        clone.querySelector("h5").textContent = producto.fields.nomProduct;
-        clone.querySelector(".card-img-top").setAttribute("src", imagen1Url);
-        fragment.appendChild(clone);
-    });
-    cards.appendChild(fragment);
-};
-
-const loadingData = (estado) => {
-    const loading = document.getElementById("loading");
-    if (estado) {
-        loading.classList.remove("d-none");
-    } else {
-        loading.classList.add("d-none");
-    }
-};
 
 document.getElementById('pdfout').onclick = function (event) {
     event.preventDefault(); // Evitar la acción predeterminada del enlace
