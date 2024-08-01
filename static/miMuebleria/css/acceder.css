@@ -22,11 +22,10 @@
     font-size: 24px; /* Tamaño de la fuente */  
     text-align: center; /* centrar texto */
     width: 50%;
-    color: white;
 }
 .imagen3{
     width: 100%; /* Ancho de la imagen al 100% del contenedor */
-    height: 1000px;/* Mantener la proporción de la imagen */
+    height: 100%;/* Mantener la proporción de la imagen */
     display: block;  /* Eliminar el espacio en línea alrededor de la imagen */
 }
 .mt-5{
@@ -74,6 +73,25 @@
     text-align: center;
     width: 100%;
     border-collapse:collapse ;
+    
+}
+.categorias td{
+    color: black;
+    background-color:antiquewhite;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-collapse:collapse ;
+
+}
+.columna-arreglada{
+    margin-top: 50px;
+    position: fixed;
+    z-index: 1000;
+    padding: 50px;
+    background-color: aqua;
+    width: 120%;
+    height: 1000px;
 }
 
 .productos{
@@ -98,4 +116,36 @@
     flex:1;
     text-align: center;
     background-color: aliceblue;
+}
+.texto-superpuesto-edit {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    width: 50%;
+    top: 25%;
+    justify-content: center;
+    margin-left: 25%;
+    margin-top: -50px;
+}
+
+.opc{
+    border: 5px;
+    border-radius: 12px;
+    background-color: #98FB98;
+    justify-content: center;
+    text-align: center;
+}
+.opc1{
+    border: 5px;
+    border-radius: 12px;
+    background-color: #87CEEB;
+    justify-content: center;
+    text-align: center;
+}
+.opc2{
+    border: 5px;
+    border-radius: 12px;
+    background-color: #FF6F6F;
+    justify-content: center;
+    text-align: center;
 }
