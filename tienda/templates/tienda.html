@@ -7,6 +7,15 @@
         <!-- Widget del carrito -->
         <div class="col-6 col-md-4 neutro" style="background-color:azure;" >
             <div class="sticky-top">
+                    {% for producto in productos %}
+                            {% if producto.categorias_id == 1 %}
+                                <h3>sillones</h3>
+                            {% elif producto.categorias_id == 0 %}
+                                <h3>clasicos</h3>
+                            {% else %}
+                                <h3> otros </h3>
+                            {% endif %}
+                        {% endfor %}
 
                 {% if request.user.is_authenticated %}
                     {% include "carro/widget.html" %}
