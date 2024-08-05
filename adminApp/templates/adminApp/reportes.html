@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Acceder{% endblock %}
+{% block content %}
+
+    <img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
+<div class="texto-superpuesto0">
+    <div class="registro">
+                    <hr color="#b10005">
+            <table class="datos">
+                   <tr>
+                    <td style="height: max-content; display: flexbox;"> <h3><b> Generar Reporte de Ventas</b></h3></td>
+                   </tr>
+            </table>
+            
+                 <table class="fechas">
+                    <tr>
+                     <td>
+                        <label for="FechaInicio"><b>Fecha de inicio</b></label>
+                        <input type="date" id="inicio" name="inicio" required placeholder="MM/DD/YYYY" style="width: 100%; padding: 0%;">
+                    </td>
+                     <td>
+                        <label for="FechaCorte"><b>Fecha de corte</b></label>
+                        <input type="date" id="corte" name="corte" placeholder="MM/DD/YYYY" style="width: 100%; padding: 0%;">
+                    </td>
+                    </tr> 
+                 </table>
+                 <br>
+                 <br>
+                 <table class="buscar">
+                    <tr>
+                      <td>  
+                    
+                        <button onclick="resumen()"class="mi-boton" style="justify-content: center;">BUSCAR</button>
+                      </td>
+                     
+                      
+                    </tr>   
+                    </table>
+    </div>
+<div class="resultados">
+	<h2><b>Resultados de la Busqueda </b></h2>
+	<table border="1px">
+		<tr>
+			<td><b>Producto</b></td>
+			<td><b>Cantidad</b></td>
+			<td><b>P.Unitario</b></td>
+			<td><b>Sub-Total</b></td>
+		</tr>
+		<!--Generar tr automatico para productos-->
+	</table>
+</div>
+</div>
