@@ -7,9 +7,6 @@ from .models import Pedido, LineaPedido
 from carro.carro import Carro
 from tienda.models import CategoriaProd
 from django.shortcuts import render
-from django.http import JsonResponse
-from decimal import Decimal, ROUND_HALF_UP 
-from django.conf import settings
 
 class ProcesarPedido(LoginRequiredMixin, View):
     login_url = '/adminApp/login'

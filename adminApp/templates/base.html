@@ -48,7 +48,7 @@
                 </td>
                 <td class="info-usuario">
                     {% if user.is_authenticated %}
-        
+
                     <a>Hola</a> {{ user.username }}<br>
                     <div class="dropdown">
                         <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true" style="background-color:green;">
@@ -57,6 +57,12 @@
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="{% url 'cerrar_sesion' %}" >Cerrar Sesion</a></li>
                           <li><a class="dropdown-item" href="{% url 'edit' %}">Datos de la cuenta</a></li>
+
+                          {% if  user.is_staff  %}
+                          <li>
+                            <a class="dropdown-item">Administración</a>
+                          </li>
+                          {% endif %}
                         </ul>
                       </div>
              

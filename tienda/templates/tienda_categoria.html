@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {% if categoria %}
+        {{ categoria.nombreCatProd }}
+    {% else %}
+        Productos
+    {% endif %}
+{% endblock %}
+{% block content %}
+<center>
+<div class="row g-0 text-center">
+    <!-- Widget del carrito y categorías -->
+    <div class="col-6 col-md-4 neutro" style="background-color:azure;">
+        <div class="sticky-top">
+            <h2>Categorías</h2>
+            <ul>
+                {% for cat in categorias %}
+                    <h3><a href="{% url 'categoria_view' cat.id %}">{{ cat.nombreCatProd }}</a></h3>
+                {% endfor %}
+            </ul>
+            {% if request.user.is_authenticated %}
+                {% include "carro/widget.html" %}
+            {% else %}
+                <div class="alert alert-danger text-center">
+                    Inicia sesión para realizar tu pedido
+                </div>
+            {% endif %}
+        </div>
+    </div>    
+    
+    <!-- Productos -->
+    <div class="col-sm-6 col-md-8 neutro">
+        <div class="row" style="height: max-content;">
+            {% for producto in productos %}
+                {% include "producto_card.html" with producto=producto %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</center>
+{% endblock %}

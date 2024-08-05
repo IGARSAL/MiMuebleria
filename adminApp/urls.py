@@ -13,6 +13,6 @@ urlpatterns = [
     path('cerrar_sesion', CerrarSesionView.as_view(), name="cerrar_sesion"),
     path('csv/', dataView.as_view(), name="csv"),
     path('csv/upload', views.cargar_csv, name='cargar_csv'),
-    path('excel/', views.descargar_excel, name='descargar_excel'),
+    
 
-] 
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

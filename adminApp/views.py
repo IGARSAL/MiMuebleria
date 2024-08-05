@@ -1,7 +1,4 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
-from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
 from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -10,11 +7,7 @@ from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView
-from tienda.models import Producto
-from .forms import dataForm
-from django.http import FileResponse
-from django.urls import reverse
-from openpyxl import Workbook
+from tienda.models import Producto, CategoriaProd
 import csv
 import logging
 
@@ -101,6 +94,8 @@ def cargar_csv(request):
                     for line in reader:
                         fileds = line
                         if len(fileds) > 1:
+
+                            print(fileds[1])
                             data_dict = {
                                 "nomProduct": fileds[0],
                                 "categorias_id": fileds[1],
@@ -123,16 +118,18 @@ def cargar_csv(request):
                 error_message = "Error al procesar el archivo CSV."
         else: 
             error_message = "No se ha cargado ningún archivo"
-    if dato_erroneo:
-        #Genera archivo en Excel si hay datos erróneos
-        excel_file = generate_excel(dato_erroneo)
-        excel_file_path ='errores.xlsx'
-        excel_file.save(excel_file_path)
+
     return render(request, template_name, {'error_message': error_message})
 
-def is_duplicate(sku):
+def buscar_categoria(categoria_nombre):
+    try:
+        return CategoriaProd.objects.get(id=categoria_nombre)
+    except CategoriaProd.DoesNotExist:
+        return None
 
+def is_duplicate(sku):
     return Producto.objects.filter(sku=sku).exists()
+
 def validar_datos(data):
     try:
         if not data["nomProduct"]:
@@ -175,41 +172,17 @@ def validar_datos(data):
 
 def guardar_producto(data):
     producto = Producto(
-        nomProducto=data["nomProduct"],
-        categorias=data["categorias_id"],
+        nomProduct=data["nomProduct"],
+        categorias_id=data["categorias_id"],
         precio=data["precio"],
         imagen1=data["imagen1"],
         imagen2=data["imagen2"],
         imagen3=data["imagen3"],
         ventas_totales=data["ventas_totales"],
-        desceunto=data["descuento"],
+        descuento=data["descuento"],
         stock=data["stock"],
         sku=data["sku"]
     )
     producto.save()
 
-def generate_excel(data):
 
-    wb = Workbook()
-    ws = wb.active
-
-    for item in data:
-        ws.append([item.get("nomProduct", ""), 
-                   item.get("categorias", ""),
-                   item.get("precio", ""),
-                   item.get("imagen1", ""), 
-                   item.get("imagen2", ""), 
-                   item.get("imagen3", ""), 
-                   item.get("ventas_totales", ""),
-                   item.get("descuento", ""),
-                   item.get("stock", ""),
-                  item.get("sku", "")
-                  ])
-    return wb
-
-def descargar_excel(request):
-    excel_file_path = 'errores.xlsx'
-    try:
-        return FileResponse(open(excel_file_path, 'rb'), as_attachment=True)
-    except FileNotFoundError:
-        return render(request, 'files/error.html', {'message': 'Archivo no encontrado'})

@@ -14,8 +14,6 @@ class AgregarProductoView(View):
 
         if cantidad_en_carro < cantidad_disponible:
             carro.agregar(producto)
-
-
         return redirect('tienda')
 
 class EliminarProductoView(View):
