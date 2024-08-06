@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 from .models import Cliente
 from tienda.models import Producto
 
+class RangoFechaForm(forms.Form):
+    fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de inicio")
+    fecha_fin = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de fin")
+
+
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -48,3 +53,4 @@ class dataForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = "__all__"
+

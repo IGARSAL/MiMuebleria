@@ -7,10 +7,25 @@ from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView
+from django.views.generic.edit import FormView
+from tienda.models import ReporteVentas
 from tienda.models import Producto, CategoriaProd
 import csv
 import logging
+from .forms import RangoFechaForm
 
+class ReporteVentasView(FormView):
+    template_name = 'adminApp/reportes.html'
+    form_class = RangoFechaForm
+    
+    def form_valid(self, form):
+        fecha_inicio = form.cleaned_data['fecha_inicio']
+        fecha_fin = form.cleaned_data['fecha_fin']
+        ventas = ReporteVentas.objects.filter(fecha__range=[fecha_inicio, fecha_fin])
+        context = self.get_context_data(form=form)
+        context['ventas'] = ventas
+        return self.render_to_response(context)
+    
 class CerrarSesionView(View):
     def get(self, request):
         logout(request)
