@@ -39,9 +39,9 @@
           {% for venta in ventas %}
 
               <tr>
-                  <td>{{ venta.producto__nomProduct }}</td>
-                  <td>{{ venta.total_cantidad }}</td>
-                  <td>${{ venta.total_venta }}</td>           
+                  <td style="text-aling:left; width:max-content;">{{ venta.producto__nomProduct }}</td>
+                  <td style="text-aling:center; width:max-content;">{{ venta.total_cantidad }}</td>
+                  <td style="text-aling:center; width:max-content;">${{ venta.total_venta }}</td>           
               </tr>
           {% endfor %}
           <button  id="excelout" type="submit" class="btn btn-success" style="background-color: rgb(95, 180, 128); border-color:  rgb(180, 95, 95);">Descargar en archivo Excel</button>
