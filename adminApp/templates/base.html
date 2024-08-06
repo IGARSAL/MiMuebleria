@@ -60,7 +60,7 @@
 
                           {% if  user.is_staff  %}
                           <li>
-                            <a class="dropdown-item">Administración</a>
+                            <a class="dropdown-item" href="{% url 'reportes' %}">Reporte de Ventas</a>
                           </li>
                           {% endif %}
                         </ul>

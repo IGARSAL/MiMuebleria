@@ -4,25 +4,26 @@
 
 <img src="https://th.bing.com/th/id/OIP.kuMiUgm7U3XazP3wHD-bHwAAAA?rs=1&pid=ImgDetMain" alt="sala" class="imagen3">
 <div class="texto-superpuesto0">
-
-<h2>Reporte de Ventas</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Generar Reporte</button>
-</form>
-{% if form.errors %}
-<div class="alert alert-danger">
-    <ul>
-        {% for field, errors in form.errors.items %}
-            <li>{{ field }}: {{ errors|striptags }}</li>
-        {% endfor %}
-    </ul>
+<div class="registro">
+    <hr color="#b10005">
+    <h2>Reporte de Ventas</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="opc2">Generar Reporte</button>
+    </form>
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                <li>{{ field }}: {{ errors|striptags }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <hr color="#b10005">
 </div>
-{% endif %}
-{% if ventas %}
-      
-      
+    {% if ventas %}  
       <div class="resultados">
         <h2><b>Resultados de la Busqueda </b></h2>
         <table class="table" border="1px">
@@ -38,9 +39,9 @@
           {% for venta in ventas %}
 
               <tr>
-                  <td>{{ venta.producto__nomProduct }}</td>
-                  <td>{{ venta.total_cantidad }}</td>
-                  <td>${{ venta.total_venta }}</td>           
+                  <td style="text-aling:left; width:max-content;">{{ venta.producto__nomProduct }}</td>
+                  <td style="text-aling:center; width:max-content;">{{ venta.total_cantidad }}</td>
+                  <td style="text-aling:center; width:max-content;">${{ venta.total_venta }}</td>           
               </tr>
           {% endfor %}
           <button  id="excelout" type="submit" class="btn btn-success" style="background-color: rgb(95, 180, 128); border-color:  rgb(180, 95, 95);">Descargar en archivo Excel</button>
