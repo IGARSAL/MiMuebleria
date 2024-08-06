@@ -11,33 +11,85 @@
     {{ form.as_p }}
     <button type="submit">Generar Reporte</button>
 </form>
-
-{% if ventas %}
-    <h3>Ventas del {{ form.fecha_inicio.value }} al {{ form.fecha_fin.value }}</h3>
-    
-    <div class="resultados">
-      <h2><b>Resultados de la Busqueda </b></h2>
-      <table class="table" border="1px">
-       <thead>
-        <tr>
-          <td><b>Producto</b></td>
-          <th><b>Usuario</b></th>
-          <td><b>Cantidad</b></td>
-          <td><b>Sub-Total</b></td>
-        </tr>
-      </thead>
-      <tbody>
-        {% for venta in ventas %}
-            <tr>
-                <td>{{ venta.producto.nomProduct }}</td>
-                <td>{{ venta.usuario.username }}</td>
-                <td>{{ venta.cantidad }}</td>
-                <td>${{ venta.total_venta }}</td>           
-            </tr>
+{% if form.errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for field, errors in form.errors.items %}
+            <li>{{ field }}: {{ errors|striptags }}</li>
         {% endfor %}
-    </tbody>
-  </table>
-    
-
+    </ul>
+</div>
 {% endif %}
+{% if ventas %}
+      
+      
+      <div class="resultados">
+        <h2><b>Resultados de la Busqueda </b></h2>
+        <table class="table" border="1px">
+        <thead>
+          <tr>
+            <td><b>Producto</b></td>
+            <td><b>Cantidad</b></td>
+            <td><b>Sub-Total</b></td>
+          </tr>
+        </thead>
+        <tbody class="mitabla">
+            <tr>Ventas del {{ fecha_inicio }} al {{ fecha_fin }}</tr>
+          {% for venta in ventas %}
+
+              <tr>
+                  <td>{{ venta.producto__nomProduct }}</td>
+                  <td>{{ venta.total_cantidad }}</td>
+                  <td>${{ venta.total_venta }}</td>           
+              </tr>
+          {% endfor %}
+          <button  id="excelout" type="submit" class="btn btn-success" style="background-color: rgb(95, 180, 128); border-color:  rgb(180, 95, 95);">Descargar en archivo Excel</button>
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay ventas en el rango de fechas seleccionado.</p>
+{% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script>
+  document.getElementById('excelout').onclick = function (event) {
+      event.preventDefault(); // Evitar la acción predeterminada del enlace
+
+      try {
+          var table = document.querySelector('.mitabla');
+          var rows = [];
+
+          // Obtener las filas de datos de la tabla
+          for (var i = 0; i < table.rows.length; i++) {
+              var row = [];
+
+              for (var j = 0; j < table.rows[i].cells.length; j++) {
+                  var cellContent = table.rows[i].cells[j].textContent.trim(); // Obtener el contenido de la celda y eliminar espacios en blanco alrededor
+
+                  // localizar el  símbolo "+" 
+                  console.log(cellContent);
+                  if (!cellContent.indexOf('+')) {
+                      cellContent = (cellContent.slice(101));
+                      row.push(cellContent);
+                  }
+                  row.push(cellContent);
+              }
+              rows.push(row);
+          }
+
+          // Crear un libro de trabajo de Excel
+          var workbook = XLSX.utils.book_new();
+          var worksheet = XLSX.utils.aoa_to_sheet(rows);
+
+          // Agregar la hoja de cálculo al libro de trabajo
+          XLSX.utils.book_append_sheet(workbook, worksheet, 'Reporte de ventas');
+
+          // Guardar el libro de trabajo como archivo Excel
+          XLSX.writeFile(workbook, 'Compra.xlsx');
+      } catch (error) {
+          console.error("Error en la generación del archivo Excel:", error);
+          alert("Error en la generación del archivo Excel. Consulta la consola para más detalles.");
+      }
+  };
+</script>
+
 {% endblock %}

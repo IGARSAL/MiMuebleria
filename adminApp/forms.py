@@ -3,11 +3,29 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from .models import Cliente
 from tienda.models import Producto
+from django.utils import timezone
+from datetime import datetime
 
 class RangoFechaForm(forms.Form):
-    fecha_inicio = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de inicio")
-    fecha_fin = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de fin")
+    fecha_inicio = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+    fecha_fin = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
+    def clean(self):
+        cleaned_data = super().clean()
+        fecha_inicio = cleaned_data.get('fecha_inicio')
+        fecha_fin = cleaned_data.get('fecha_fin')
+        fecha_actual = timezone.now().date()
+
+        if fecha_inicio and fecha_inicio > fecha_actual:
+            self.add_error('fecha_inicio', 'La fecha de inicio no puede ser posteriror a la fecha ')
+        
+        if fecha_fin and fecha_fin > fecha_actual:
+            self.add_error('fecha_fin', 'La fecha de fin no puede ser posterior a la fecha actual')
+
+        if fecha_inicio and fecha_fin and fecha_inicio > fecha_fin:
+            self.add_error('fecha_inicio', 'La fecha de inicio no puede ser posterior a la fecha de fin')
+
+        return cleaned_data 
 
 class LoginForm(forms.Form):
     username = forms.CharField()

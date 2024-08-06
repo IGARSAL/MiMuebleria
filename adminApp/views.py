@@ -1,18 +1,20 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import View
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm
+from django.utils import timezone
+from django.db.models import Sum
+from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm, RangoFechaForm
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
-from tienda.models import ReporteVentas
-from tienda.models import Producto, CategoriaProd
+from tienda.models import Producto, CategoriaProd, ReporteVentas
+from django.views import View
 import csv
 import logging
-from .forms import RangoFechaForm
+
 
 class ReporteVentasView(FormView):
     template_name = 'adminApp/reportes.html'
@@ -21,9 +23,14 @@ class ReporteVentasView(FormView):
     def form_valid(self, form):
         fecha_inicio = form.cleaned_data['fecha_inicio']
         fecha_fin = form.cleaned_data['fecha_fin']
-        ventas = ReporteVentas.objects.filter(fecha__range=[fecha_inicio, fecha_fin])
+        ventas = ReporteVentas.objects.filter(fecha__date__range=[fecha_inicio, fecha_fin]) \
+                                .values('producto__nomProduct') \
+                                .annotate(total_cantidad=Sum('cantidad'), total_venta=Sum('total_venta')) \
+                                .order_by('producto__nomProduct')
         context = self.get_context_data(form=form)
         context['ventas'] = ventas
+        context['fecha_inicio'] = fecha_inicio
+        context['fecha_fin'] = fecha_fin
         return self.render_to_response(context)
     
 class CerrarSesionView(View):
