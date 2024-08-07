@@ -59,9 +59,10 @@
                           <li><a class="dropdown-item" href="{% url 'edit' %}">Datos de la cuenta</a></li>
 
                           {% if  user.is_staff  %}
-                          <li>
-                            <a class="dropdown-item" href="{% url 'reportes' %}">Reporte de Ventas</a>
-                          </li>
+                          
+                            <li><a class="dropdown-item" href="{% url 'reportes' %}">Reporte de Ventas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'carga' %}">Carga Masiva de Productos</a></li>
+                          
                           {% endif %}
                         </ul>
                       </div>
