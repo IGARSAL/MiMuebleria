@@ -14,14 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
     <!-- Encabezado de la página -->
    <div class="menu1">
         <table class="tabla1">
@@ -60,8 +52,8 @@
 
                           {% if  user.is_staff  %}
                           
-                            <li><a class="dropdown-item" href="{% url 'reportes' %}">Reporte de Ventas</a></li>
-                            <li><a class="dropdown-item" href="{% url 'carga' %}">Carga Masiva de Productos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'reporte_ventas' %}">Reporte de Ventas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cargar_csv' %}">Carga Masiva de Productos</a></li>
                           
                           {% endif %}
                         </ul>

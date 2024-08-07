@@ -4,18 +4,31 @@
 <!-- Carga los archivos estáticos como CSS, JS, etc. -->
 
 {% block content %}
+
+
+
+<img src="https://th.bing.com/th/id/OIP.-Smb4i_wUddcwJiMe3THOAAAAA?rs=1&pid=ImgDetMain" alt="umbraLogo"style="width:100%; height:auto; justify-content:center;">
+<div class="texto-superpuesto-edit2">
 <div class="spinner-border text-primary" role="status" id="spinner" style="display: none;">
     <span class="visually-hidden">Cargando...</span>
 </div>
-
 <div id="data-box" class="container">
-    <div class="row">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <div class="row" style="justify-content:center;">
         <form id="uploadForm" method="POST" enctype="multipart/form-data" class="form-horizontal">
             {% csrf_token %}
             <div class="form-group">
                 <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">Archivos: </label>
-                <div class="col-md-8">
-                    <input type="file" name="csv_file" required="True" class="form-control">
+                <div class="col-md-8" style="width: 600px;">
+                    <input onclick="confirmar()" id="cnf" type="file" name="csv_file" required="True" class="form-control">
                 </div>
             </div>
             <div class="form-group">
@@ -25,6 +38,7 @@
             </div>
         </form>
     </div> 
+</div>
 </div>
 
 {% endblock %}

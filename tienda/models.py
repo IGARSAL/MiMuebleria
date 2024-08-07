@@ -1,8 +1,8 @@
 import os
 from django.db import models
 from datetime import datetime
-from django.db import models
 from django.contrib.auth import get_user_model
+
 
 User = get_user_model()
 
@@ -21,6 +21,8 @@ class CategoriaProd(models.Model):
     
     def __str__(self):
         return self.nombreCatProd
+
+
 
 class Producto(models.Model):
     nomProduct = models.CharField(max_length=100, help_text='Nombre del producto')

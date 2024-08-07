@@ -1,13 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.utils import timezone
 from django.db.models import Sum
 from .forms import ClienteEditForm, UserEditForm, UserRegistrationForm, RangoFechaForm
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from django.views.generic import ListView
 from django.views.generic.edit import FormView
 from tienda.models import Producto, CategoriaProd, ReporteVentas
@@ -116,8 +114,6 @@ def cargar_csv(request):
                     for line in reader:
                         fileds = line
                         if len(fileds) > 1:
-
-                            print(fileds[1])
                             data_dict = {
                                 "nomProduct": fileds[0],
                                 "categorias_id": fileds[1],
@@ -129,19 +125,25 @@ def cargar_csv(request):
                                 "descuento": fileds[7],
                                 "stock": fileds[8],
                                 "sku": fileds[9],
-                                
+                               
                             }
                             if not is_duplicate(data_dict["sku"]) and validar_datos(data_dict):
                                 guardar_producto(data_dict)
+
                             else:
                                 dato_erroneo.append(data_dict)
+                    if dato_erroneo:
+                        messages.warning(request, 'algunos datos no se cargaron correctamente.')
+                    else:
+                        messages.success(request, 'Archivo CVS cargado correctamente')
             except Exception as ex:
                 logger.error(f"Error al procesar el archivo CSV: {repr(ex)}")
-                error_message = "Error al procesar el archivo CSV."
+                messages.error(request, 'Error al procesar el archivo CSV')
+                
         else: 
-            error_message = "No se ha cargado ningún archivo"
+            messages.error(request, 'No se ha cargado ningún archivo.')
 
-    return render(request, template_name, {'error_message': error_message})
+    return render(request, template_name)
 
 def buscar_categoria(categoria_nombre):
     try:

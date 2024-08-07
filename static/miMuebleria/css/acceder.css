@@ -110,6 +110,7 @@
     justify-content: center;
     margin-left: 25%;
     margin-top: -50px;
+    height: max-content;
 }
 
 .opc{
@@ -152,7 +153,6 @@
     border-radius: 3px; /* Bordes redondeados de la etiqueta */
     
 }
-
 .registro table{
     padding: 0px;
     border: 0px;
@@ -210,10 +210,28 @@
      background: rgba(255, 255, 255, 0.5);
     border-radius: 0px;
     padding: 0px;
-    margin-left: 200px;
-    margin-top: -10px;
-    margin-bottom: 100px;
     justify-content: center;
     justify-items: center;
+    height: 400px;
+    overflow-y: scroll;
+    padding:10px;
+    border: 1px solid #ccc;
 }
+.scroll{
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: scroll;
     
+}
+.texto-superpuesto-edit2 {
+    position: absolute; /* Posiciona el texto absolutamente dentro del contenedor */
+    font-size: 24px; /* Tamaño de la fuente */  
+    text-align: center; /* centrar texto */
+    width: max-content;
+    top: 25%;
+    justify-content: center;
+    margin-left: 35%;
+    margin-top: -50px;
+    height: max-content;
+    background: rgba(255, 255, 255, 0.5);
+}
