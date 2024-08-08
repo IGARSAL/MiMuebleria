@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
 </head>
-<body>
+<body onload="deshabilitaRetroceso()">
     <table class="table table-bordered" style="color: rgb(22, 21, 21);">
         <thead>
             <tr>
@@ -24,7 +24,7 @@
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tbody class="mitabla">
+        <tbody class="mitabla" onload="deshabilitaRetroceso()">
             <!-- Comprueba si hay productos en el carro-->
             {% if request.session.carro and request.session.carro.items %}
                 {% for key, value in request.session.carro.items %}
