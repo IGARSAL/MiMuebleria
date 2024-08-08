@@ -148,3 +148,14 @@ function deshabilitaRetroceso(){
     window.location.hash="Again-No-back-button" //chrome
     window.onhashchange=function(){window.location.hash="";}
 }
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();  // Recargar la página al regresar
+    }
+};
+window.onload = function() {
+    document.forms[0].reset();  // Restablece el primer formulario en la página
+};
+
+
+
