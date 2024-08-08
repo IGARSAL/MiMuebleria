@@ -143,3 +143,8 @@ document.getElementById('pdfout').onclick = function (event) {
         alert("Error en la generación del PDF. Consulta la consola para más detalles.");
     }
 };
+function deshabilitaRetroceso(){
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button" //chrome
+    window.onhashchange=function(){window.location.hash="";}
+}
