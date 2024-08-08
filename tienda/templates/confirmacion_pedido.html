@@ -25,8 +25,10 @@
                     </li>
                     {% endfor %}
                 </ul>
-               <b> <a href="{% url 'tienda' %}">Volver a la tienda</a> </b>
+               <b> <a href="{% url 'home' %}">Volver al incio </a> </b>
                 <p>Gracias por tu compra, {{ request.user.username }}!</p>
+                <button  id="pdfout" type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color:  rgb(180, 95, 95);">Descargar en archivo PDF</button>
+
             </div>
           </div>
         </td>
