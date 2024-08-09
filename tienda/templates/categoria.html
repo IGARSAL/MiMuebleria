@@ -1,7 +1,7 @@
 
 
 {% extends "base.html" %}
-{% load static%}
+{% load static %}
 {% block title %} {% if categoria %}{{ categoria.nombreCatProd}}{% else %}Todos los Productos{% endif %}{% endblock %}
 {% block content %}
 
@@ -32,7 +32,8 @@
                     <div class="col-lg-3">
                         <div class="card text-center shadow" style="height: 500px; margin: 5px 5px;">
                             {% if producto.imagen1 %}
-                                <img src=" {{ MEDIA_URL }}" alt="{{ producto.nomProduct }}" class="card-img-top" style="height: 40%; display:block;">
+                            
+                                <img src="{{ MEDIA_URL }}{{ producto.imagen1.url }}" class="card-img-top" style="height: 40%; display:block;">
                                 {% if producto.descuento > 0 %}
                                     <div class="etiqueta"> {{producto.descuento }} % </div>  <!-- Etiqueta de descuento -->
                                 {% endif %}

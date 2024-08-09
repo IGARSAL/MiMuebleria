@@ -26,6 +26,9 @@
                     {% endfor %}
                 </ul>
                <b> <a href="{% url 'tienda' %}">Volver a la tienda</a> </b>
+               <form method="post" action="{% url 'almacen:procesar_pedido' %}">
+                {% csrf_token %}
+                <button  id="pdfout" type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color:  rgb(180, 95, 95);">Descargar en archivo PDF</button>
                 <p>Gracias por tu compra, {{ request.user.username }}!</p>
             </div>
           </div>

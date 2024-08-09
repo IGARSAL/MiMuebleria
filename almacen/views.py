@@ -7,7 +7,42 @@ from .models import Pedido, LineaPedido
 from carro.carro import Carro
 from tienda.models import CategoriaProd
 from django.shortcuts import render
+from django.core.mail import EmailMessage
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
 
+class EnviarMailPedido:
+    def __init__(self, pedido, lineas_pedido, nombreusuario, emailusuario, importe_total_carro):
+        self.pedido = pedido
+        self.lineas_pedido = lineas_pedido
+        self.nombreusuario = nombreusuario
+        self.emailusuario = emailusuario
+        self.importe_total_carro = importe_total_carro
+
+    def enviar(self):
+        asunto = "Gracias por tu pedido"
+        mensaje_html = render_to_string("emails/pedidos.html", {
+            "pedido": self.pedido,
+            "lineas_pedido": self.lineas_pedido,
+            "nombreusuario": self.nombreusuario,
+            "emailusuario": self.emailusuario,
+            "importe_total_carro": self.importe_total_carro,
+           
+        })
+        mensaje_texto = strip_tags(mensaje_html)
+        from_email = "inti.garcia@fgr.org.mx"
+        to_email = self.emailusuario
+
+        email = EmailMessage(asunto, mensaje_texto, from_email, [to_email])
+        email.content_subtype = "html"
+
+        try:
+            email.send()
+            return True 
+        except Exception as e:
+            print(f"Error al enviar correo electronico: {e}")
+            return False    
+        
 class ProcesarPedido(LoginRequiredMixin, View):
     login_url = '/adminApp/login'
 
@@ -19,9 +54,6 @@ class ProcesarPedido(LoginRequiredMixin, View):
 
 
         for key, value in carro.carro.items():
-            print(f"Procesando producto con id {key}")  # Debugging
-            print(f"Valor en carrito: {value}")  # Debugging
-
             cantidad = int(value["stock"])
             precio = float(value["precio"])
             total_linea = cantidad * precio
@@ -29,7 +61,6 @@ class ProcesarPedido(LoginRequiredMixin, View):
 
             try:
                 producto = Producto.objects.get(id=key)
-                print(f"Producto encontrado: {producto.nomProduct} con stock {producto.stock}")  # Debugging
                 if producto.stock < cantidad:
                     messages.error(request, f"No existen suficientes productos en almacen para {producto.nomProduct}")
                     return redirect("home")
@@ -37,8 +68,7 @@ class ProcesarPedido(LoginRequiredMixin, View):
                 producto.stock -= cantidad
                 producto.ventas_totales += cantidad
                 producto.save()
-                print(f"Producto {producto.nomProduct} actualizado: stock {producto.stock}, ventas_totales {producto.ventas_totales}")  # Debugging
-
+                
                 lineas_pedido.append(LineaPedido(
                     producto=producto,
                     cantidadVendida=cantidad,

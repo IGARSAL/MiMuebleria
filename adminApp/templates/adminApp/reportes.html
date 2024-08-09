@@ -27,75 +27,84 @@
     {% if ventas %}  
       <div class="resultados">
         <h2><b>Resultados de la Busqueda </b></h2>
-        <table class="table" border="1px" style="height:100px; overflow-y:scroll;">
+        <h6>Ventas del {{ fecha_inicio }} al {{ fecha_fin }}</h6>
+        <table class="mitabla" border="1px" style="height:100px; overflow-y:scroll;">
         <thead>
           <tr>
             <td><b>Producto</b></td>
             <td><b>Cantidad</b></td>
             <td><b>Sub-Total</b></td>
           </tr>
+
         </thead>
-        <tbody class=" mitabla scroll">
-            <tr>Ventas del {{ fecha_inicio }} al {{ fecha_fin }}</tr>
+        <tbody class="scroll">
+
           {% for venta in ventas %}
 
               <tr>
                   <td style="text-align:left; width:max-content;">{{ venta.producto__nomProduct }}</td>
                   <td style="text-align:center; width:max-content;">{{ venta.total_cantidad }}</td>
-                  <td style="text-align:center; width:max-content;">${{ venta.total_venta }}</td>           
+                  <td style="text-align:center; width:max-content;">{{ venta.total_venta }}</td>           
               </tr>
               
           {% endfor %}
-          <button  id="excelout" type="submit" class="btn btn-success" style="background-color: rgb(95, 180, 128); border-color:  rgb(180, 95, 95);">Descargar en archivo Excel</button>
+          <button id="excelout-unique" type="button" class="btn btn-success" style="background-color: rgb(95, 180, 128); border-color:  rgb(180, 95, 95);">Descargar en archivo Excel</button>
+
       </tbody>
     </table>
   {% else %}
     <p>No hay ventas en el rango de fechas seleccionado.</p>
 {% endif %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</div>
+</div>
 <script>
-  document.getElementById('excelout').onclick = function (event) {
-      event.preventDefault(); // Evitar la acción predeterminada del enlace
+document.getElementById('excelout-unique').onclick = function (event) {
+    event.preventDefault(); 
 
-      try {
-          var table = document.querySelector('.mitabla');
-          var rows = [];
+    try {
+        var table = document.querySelector('.mitabla');
+        var rows = [];
+        var totalVentas = 0; // Inicializa totalVentas
 
-          // Obtener las filas de datos de la tabla
-          for (var i = 0; i < table.rows.length; i++) {
-              var row = [];
+        for (var i = 0; i < table.rows.length; i++) { 
+            var row = [];
+            for (var j = 0; j < table.rows[i].cells.length; j++) {
+                row.push(table.rows[i].cells[j].textContent.trim());
+            }
+            rows.push(row);
+            // Sumar el valor de la columna de ventas (asumiendo que es la segunda columna)
+            totalVentas += parseFloat(table.rows[i].cells[2].textContent.trim()) || 0; 
+        }
 
-              for (var j = 0; j < table.rows[i].cells.length; j++) {
-                  var cellContent = table.rows[i].cells[j].textContent.trim(); // Obtener el contenido de la celda y eliminar espacios en blanco alrededor
+        if (rows.length === 0) {
+            alert("No hay datos para exportar.");
+            return;
+        }
 
-                  // localizar el  símbolo "+" 
-                  console.log(cellContent);
-                  if (!cellContent.indexOf('+')) {
-                      cellContent = (cellContent.slice(101));
-                      row.push(cellContent);
-                  }
-                  row.push(cellContent);
-              }
-              rows.push(row);
-          }
+        // Agregar el total de ventas como una nueva fila a la tabla en el HTML
+        var totalRow = table.insertRow(table.rows.length); // Agrega fila al final de la tabla
+        var cell1 = totalRow.insertCell(0); // Ajusta según el número de columnas
+        var cell2 = totalRow.insertCell(1); // Ajusta según el número de columnas
+        var cell3 = totalRow.insertCell(2); // Ajusta según el número de columnas
 
-          // Crear un libro de trabajo de Excel
-          var workbook = XLSX.utils.book_new();
-          var worksheet = XLSX.utils.aoa_to_sheet(rows);
+        cell1.textContent = ""; // Dejar vacío
+        cell2.textContent = "Total Ventas"; // Texto del total
+        cell3.textContent = totalVentas.toFixed(2); // Total formateado a dos decimales
 
-          // Agregar la hoja de cálculo al libro de trabajo
-          XLSX.utils.book_append_sheet(workbook, worksheet, 'Reporte de ventas');
+        // continuar con la generación del archivo Excel
+        rows.push(['', 'Total Ventas', totalVentas]); // Ajusta según el formato de tus columnas
 
-          // Guardar el libro de trabajo como archivo Excel
-          XLSX.writeFile(workbook, 'Compra.xlsx');
-      } catch (error) {
-          console.error("Error en la generación del archivo Excel:", error);
-          alert("Error en la generación del archivo Excel. Consulta la consola para más detalles.");
-      }
-  };
+        var workbook = XLSX.utils.book_new();
+        var worksheet = XLSX.utils.aoa_to_sheet(rows);
+
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Reporte de ventas');
+        XLSX.writeFile(workbook, 'Compra.xlsx');
+    } catch (error) {
+        console.error("Error en la generación del archivo Excel:", error);
+        alert("Error en la generación del archivo Excel. Consulta la consola para más detalles.");
+    }
+};
 </script>
-</div>
-</div>
-
 {% endblock %}
+

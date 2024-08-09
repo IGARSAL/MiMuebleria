@@ -103,20 +103,21 @@ class CategoriaView(View):
 
             # Calcular precio con descuento para cada producto
             for producto in productos:
+
                 if producto.descuento > 0:
                     descuento_decimal = Decimal(producto.descuento) / Decimal(100)
                     precio_descuento = (producto.precio * (Decimal(1) - descuento_decimal)).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
                 else:
                     precio_descuento = producto.precio
                 producto.precio_descuento = precio_descuento  # Asigna el precio con descuento como un atributo del producto
-
-
+                # import pdb
+                # pdb.set_trace()
             context = {
                 'categoria': categoria,
                 'productos': productos,
                 'categorias': categorias,
                 'query': query,
-                'MEDIA_URL': producto.imagen1.url if producto.imagen1 else None,
+                'MEDIA_URL': 'http://127.0.0.1:8000/',
             }
             return render(request, "categoria.html", context)
         
