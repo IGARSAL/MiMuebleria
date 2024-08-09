@@ -140,16 +140,3 @@ document.getElementById('pdfout').onclick = function (event) {
         alert("Error en la generación del PDF. Consulta la consola para más detalles.");
     }
 };
-function deshabilitaRetroceso(){
-    window.location.hash="no-back-button";
-    window.location.hash="Again-No-back-button" //chrome
-    window.onhashchange=function(){window.location.hash="";} //agregar entre las comillas Again-No-back-button, en caso que no funciones
-}
-window.onpageshow = function(event) {
-    if (event.persisted) {
-        window.location.reload();  // Recargar la página al regresar
-    }
-};
-window.onload = function() {
-    document.forms[0].reset();  // Restablece el primer formulario en la página
-};

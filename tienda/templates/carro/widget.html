@@ -10,8 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
     <script src="{% static 'miMuebleria/js/app.js' %}"></script>
 </head>
-<body onload="deshabilitaRetroceso()">
-    <table onload="deshabilitaRetroceso()" class="table table-bordered" style="color: rgb(22, 21, 21);" >
+<body>
+    <table class="table table-bordered" style="color: rgb(22, 21, 21);">
         <thead>
             <tr>
                 <th colspan="4" class="text-center">
@@ -25,7 +25,7 @@
                 <th>Subtotal</th>
             </tr>
         </thead>
-        <tbody class="mitabla">
+        <tbody class="mitabla" onload="deshabilitaRetroceso()">
             <!-- Comprueba si hay productos en el carro-->
             {% if request.session.carro and request.session.carro.items %}
                 {% for key, value in request.session.carro.items %}
@@ -66,7 +66,14 @@
                 <td colspan="2" style="text-align: center;">
                     <form method="post" action="{% url 'almacen:procesar_pedido' %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color:  rgb(180, 95, 95);">Realizar pedido</button>
+                        <button id="pdfout" type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color:  rgb(180, 95, 95);">Realizar pedido</button>
+                     
+                    </td>
+                </td>
+                <td colspan="2" style="text-align: center;">
+                    <form method="post" action="{% url 'almacen:procesar_pedido' %}">
+                        {% csrf_token %}
+                        <button  id="pdfout" type="submit" class="btn btn-success" style="background-color: rgb(180, 95, 95); border-color:  rgb(180, 95, 95);">Descargar en archivo PDF</button>
                      
                     </td>
                 </td>
